@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e4a1b1b-b38c-484a-b516-0acfab7fd06e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/LogDataCommunications/logfirst33.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MQTT/LogDataCommunications/logfirst33.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modbus_write_single_register.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mqtt_data_transmission/FrameSenderReciver_A.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mqtt_data_transmission/FrameSenderReciver_B.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mqtt_data_transmission/MQTT_client_topic1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mqtt_data_transmission/MQTT_client_topic2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mqtt_data_transmission/MQTT_server.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mqtt_data_transmission/utils/handle_data_util.py" beforeDir="false" />
-    </list>
+    <list default="true" id="7e4a1b1b-b38c-484a-b516-0acfab7fd06e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,11 +20,21 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MQTT/LogDataCommunications/logfirst33.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="5" selection-end-column="65" />
+            <state relative-caret-position="115">
+              <caret line="5" column="51" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SAGAN/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -82,6 +83,15 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\WorkSpace\SAGAN_MQTT\SAGAN" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\WorkSpace\SAGAN_MQTT\Data" />
+      <recent name="E:\WorkSpace\SAGAN_MQTT\MQTT" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -104,15 +114,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1576393133151</updated>
-      <workItem from="1576393134499" duration="281000" />
+      <workItem from="1576393134499" duration="380000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="281000" />
+    <option name="totallyTimeSpent" value="380000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31434315" />
@@ -147,10 +158,28 @@
     <entry file="file://$PROJECT_DIR$/Data/temp_cases.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="46">
+            <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MQTT/LogDataCommunications/logfirst33.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="5" selection-end-column="65" />
+        <state relative-caret-position="115">
+          <caret line="5" column="51" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SAGAN/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
