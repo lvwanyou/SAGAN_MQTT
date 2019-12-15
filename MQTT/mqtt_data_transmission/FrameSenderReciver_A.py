@@ -1,5 +1,5 @@
 import socket
-from mqtt_data_transmission.utils.handle_data_util import dataSwitch
+from MQTT.mqtt_data_transmission.utils.handle_data_util import dataSwitch
 import time
 import os
 import sys
