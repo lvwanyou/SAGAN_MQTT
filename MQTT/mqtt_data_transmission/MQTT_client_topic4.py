@@ -23,7 +23,7 @@ for i in range(MQTT_const.total_topic_num):
 
 
 if __name__ == '__main__':
-    mqttc = mqtt.Client("test1")
+    mqttc = mqtt.Client("test4")
     # mqttc.on_message = MQTT_const.on_message
     # mqttc.on_connect = MQTT_const.on_connect
     # mqttc.on_publish = MQTT_const.on_publish
@@ -80,6 +80,7 @@ if __name__ == '__main__':
                 sub_self_topic_index = np.random.randint(0, len(sub_self_topic_array))  # 左闭右开
                 mqttc.unsubscribe(sub_self_topic_array[sub_self_topic_index])
         time.sleep(MQTT_const.sleep_time)
+
 
 
 
