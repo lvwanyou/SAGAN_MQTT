@@ -19,7 +19,7 @@ if __name__ == '__main__':
         count = 0
     #with open('GeneratedDataModbus/generated_data_write_single_register_16.txt', 'r') as f:
     #with open('dataseven1.txt', 'r') as f:
-    with open('mqtt_template.txt', 'r') as f:
+    with open('Data/mqtt_template.txt', 'r') as f:
         try:
             content = f.readlines()
             for i, val in enumerate(content):
@@ -39,10 +39,10 @@ if __name__ == '__main__':
         except IOError as e:
             s.close()
             f.close()
-            os.system("python FrameSenderReciver_B.py " + str(count))
+            os.system("python MQTT/mqtt_data_transmission/FrameSenderReciver_A.py " + str(count))
             print('can not read the file!')
         finally:
-            with open("log_data_communications/logfirst33.txt", "a") as f:
+            with open("MQTT/log_data_communications/logfirst33.txt", "a") as f:
                 f.write(" ".join(logs))
 #RX Reciving Data
 #TX Sending Data
