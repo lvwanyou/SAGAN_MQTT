@@ -61,9 +61,10 @@ class SA_GAN_SEQ(object):
 
         self.disc_cost = tf.reduce_mean(self.fake_logits) - tf.reduce_mean(self.real_logits)
         self.gen_cost = -tf.reduce_mean(self.fake_logits)
+        self.w_distance = tf.reduce_mean(self.real_logits) - tf.reduce_mean(self.fake_logits)
 
-        self.gen_prob = tf.reduce_mean(tf.sigmoid(self.fake_logits))/self.batch_size
-        self.real_prob = tf.reduce_mean(tf.sigmoid(self.real_logits))/self.batch_size
+        self.gen_prob = tf.reduce_mean(tf.sigmoid(self.fake_logits))
+        self.real_prob = tf.reduce_mean(tf.sigmoid(self.real_logits))
 
         # WGAN lipschitz-penalty
         self.alpha = tf.random_uniform(
@@ -117,7 +118,7 @@ class SA_GAN_SEQ(object):
                                   name="weights")
             logits = tf.einsum('ntd,dk->ntk', x, weights) #(batch_size, seq_size, vocab_size)
             #res = tf.reshape(tf.argmax(logits, axis=2), [self.batch_size, self.seq_size])
-        return logits
+        return tf.nn.softmax(logits)
 
 
     def discriminator_(self, x, is_training=True):
@@ -153,7 +154,7 @@ class SA_GAN_SEQ(object):
         return inputs + (0.3 * output)
 
     def discriminator(self, x):
-        output = tf.transpose(x, [0, 2, 1])
+        output = tf.transpose(x, [0, 2, 1])# (batch_size, vocab_size, seq_len)
         output = lib.ops.conv1d.Conv1D('Discriminator.Input', self.vocab_size, self.d_model, 1, output)
         output = self.ResBlock('Discriminator.1', output)
         output = self.ResBlock('Discriminator.2', output)
@@ -188,12 +189,12 @@ class SA_GAN_SEQ(object):
                         z = make_noise([self.batch_size, self.z_dim])
                         iter += 1
                         real_inputs_discrete = next(real_data)  # (batch_size, seq_len)
-                        gen_samples, gen_prob, real_prob, disc_cost, gen_cost = \
-                            self.sess.run([self.fake_inputs_discrete, self.gen_prob, self.real_prob,self.disc_cost, self.gen_cost],
+                        gen_samples, gen_prob, real_prob, disc_cost, gen_cost, w_distance = \
+                            self.sess.run([self.fake_inputs_discrete, self.gen_prob, self.real_prob,self.disc_cost, self.gen_cost, self.w_distance],
                                           feed_dict={self.real_inputs_discrete: real_inputs_discrete,self.z: z})
                         translate(gen_samples, self.i2w)
-                        print("Epoch {}\niter {}\ndisc cost {}, real prob {}\ngen cost {}, gen prob {} \ntime{}"
-                              .format(e, iter, disc_cost, real_prob, gen_cost, gen_prob, timedelta(seconds=time.time() - epoch_start_time)))
+                        print("Epoch {}\niter {}\ndisc cost {}, real prob {}\ngen cost {}, gen prob {}\nw-distance {}\ntime{}"
+                              .format(e, iter, disc_cost, real_prob, gen_cost, gen_prob, w_distance, timedelta(seconds=time.time() - epoch_start_time)))
 
                     if iter % n_batch == n_batch-1:
                         epoch_over = True

@@ -15,15 +15,15 @@ def parse_args():
 
     parser.add_argument('--z_dim', type=int, default=10)
 
-    parser.add_argument('--critic_iters', type=int, default=10)
+    parser.add_argument('--critic_iters', type=int, default=5)
     parser.add_argument('--LAMBDA', type=int, default=10)
     parser.add_argument('--seq_size', type=int, default=24)
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--epoch', type=int, default=100)
     parser.add_argument('--iteration', type=int, default=10000)
     parser.add_argument('--sample_num', type=int, default=10)
-    parser.add_argument('--d_model', type=int, default=24)
-    parser.add_argument('--num_blocks', type=int, default=6)
+    parser.add_argument('--d_model', type=int, default=20)
+    parser.add_argument('--num_blocks', type=int, default=1)
     parser.add_argument('--num_heads', type=int, default=2)
     parser.add_argument('--vocab_size', type=int, default=16)
     parser.add_argument('--dropout_rate', type=float, default=0.3)
