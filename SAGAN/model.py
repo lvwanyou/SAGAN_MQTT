@@ -83,7 +83,7 @@ class SA_GAN_SEQ(object):
 
         self.variable = tf.trainable_variables()
         self.gen_params = [v for v in self.variable if 'Generator' in v.op.name]
-        self.disc_params = [v for v in self.variable if 'Discriminator' in v.op.name]
+        self.disc_params = [v for v in self.variable if 'discriminator' in v.op.name]
 
         self.gen_train_op = tf.train.AdamOptimizer(learning_rate=1e-4, beta1=0.5, beta2=0.9).minimize(self.gen_cost,
                                                                                                  var_list=self.gen_params)
@@ -113,6 +113,9 @@ class SA_GAN_SEQ(object):
                                               training=is_training,
                                               causality=False)
                     x = ff(x, num_units=[self.d_ff, self.d_model])
+            x = tf.transpose(x, [0, 2, 1])# (batch_size, d_model , seq_len)
+            x = self.ResBlock('ResBlock', x)
+            x = tf.transpose(x, [0, 2, 1])
 
             weights = tf.Variable(tf.random_normal([self.d_model, self.vocab_size], stddev=0.1),
                                   name="weights")
@@ -120,28 +123,46 @@ class SA_GAN_SEQ(object):
             #res = tf.reshape(tf.argmax(logits, axis=2), [self.batch_size, self.seq_size])
         return tf.nn.softmax(logits)
 
+    def self_attention(self, input, is_training=True):
+        return multihead_attention(queries=input,
+                                  keys=input,
+                                  values=input,
+                                  num_heads=self.num_heads,
+                                  dropout_rate=self.dropout_rate,
+                                  training=is_training,
+                                  causality=False)
 
-    def discriminator_(self, x, is_training=True):
+    def discriminator(self, x, is_training=True):
         """
 
         """
         with tf.variable_scope("discriminator", reuse=tf.AUTO_REUSE):
-            enc = tf.nn.embedding_lookup(self.embeddings, tf.argmax(x, axis=2))  # x's shape (batch_size, seq_size)
-            enc *= self.d_model ** 0.5
-            enc += positional_encoding(enc, self.seq_size)
-            enc = tf.layers.dropout(enc, self.dropout_rate, training=is_training)
+            output = tf.transpose(x, [0, 2, 1])  # (batch_size, vocab_size, seq_len)
+            output = lib.ops.conv1d.Conv1D('Conv1d.1', self.vocab_size, self.vocab_size, 5, output)
+            output = lib.ops.conv1d.Conv1D('Conv1d.2', self.vocab_size, self.vocab_size, 5, output)
+            output = lib.ops.conv1d.Conv1D('Conv1d.3', self.vocab_size, self.vocab_size, 5, output)
+            output = tf.transpose(output, [0, 2, 1])
+            output = self.self_attention(output, is_training)
+            output = tf.transpose(output, [0, 2, 1])
+            output = lib.ops.conv1d.Conv1D('Conv1d.4', self.vocab_size, self.vocab_size, 5, output)
+            output = tf.transpose(output, [0, 2, 1])
+            output = self.self_attention(output, is_training)
 
-            for i in range(self.num_blocks):
-                with tf.variable_scope("num_blocks_{}".format(i), reuse=tf.AUTO_REUSE):
-                    enc = multihead_attention(queries=enc,
-                                              keys=enc,
-                                              values=enc,
-                                              num_heads=self.num_heads,
-                                              dropout_rate=self.dropout_rate,
-                                              training=is_training,
-                                              causality=False)
-                    enc = ff(enc, num_units=[self.d_ff, self.d_model])
-            enc = tf.reshape(enc, [self.batch_size, self.d_model * self.seq_size])
+            # enc *= self.d_model ** 0.5
+            # enc += positional_encoding(enc, self.seq_size)
+            # enc = tf.layers.dropout(enc, self.dropout_rate, training=is_training)
+            #
+            # for i in range(self.num_blocks):
+            #     with tf.variable_scope("num_blocks_{}".format(i), reuse=tf.AUTO_REUSE):
+            #         enc = multihead_attention(queries=enc,
+            #                                   keys=enc,
+            #                                   values=enc,
+            #                                   num_heads=self.num_heads,
+            #                                   dropout_rate=self.dropout_rate,
+            #                                   training=is_training,
+            #                                   causality=False)
+            #         enc = ff(enc, num_units=[self.d_ff, self.d_model])
+            enc = tf.reshape(output, [self.batch_size, self.vocab_size * self.seq_size])
             res = tf.layers.dense(enc, units=1)
         return res
 
@@ -153,7 +174,7 @@ class SA_GAN_SEQ(object):
         output = lib.ops.conv1d.Conv1D(name + '.2', self.d_model, self.d_model, 5, output)
         return inputs + (0.3 * output)
 
-    def discriminator(self, x):
+    def discriminator_(self, x):
         output = tf.transpose(x, [0, 2, 1])# (batch_size, vocab_size, seq_len)
         output = lib.ops.conv1d.Conv1D('Discriminator.Input', self.vocab_size, self.d_model, 1, output)
         output = self.ResBlock('Discriminator.1', output)
