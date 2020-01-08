@@ -9,6 +9,7 @@ import os
 import tflib as lib
 import tflib.ops.linear
 import tflib.ops.conv1d
+import matplotlib.pyplot as plt
 
 class SA_GAN_SEQ(object):
     def __init__(self, sess, args, w2i, i2w):
@@ -187,10 +188,14 @@ class SA_GAN_SEQ(object):
         return output
 
     def train(self, data):
-        iter = 0
+        batch = 0
         n_batch = len(data)//self.batch_size
         self.sess.run(tf.global_variables_initializer())
-
+        total_batch = n_batch//100 * self.epoch
+        print(n_batch//100 * self.epoch)
+        fig_w_distance = np.zeros([total_batch])
+        fig_d_loss_trains = np.zeros([total_batch])
+        fig_g_loss_trains = np.zeros([total_batch])
         for e in range(self.epoch):
             real_data = inf_train_gen(data, self.batch_size)
             epoch_start_time = time.time()
@@ -213,6 +218,11 @@ class SA_GAN_SEQ(object):
                         gen_samples, gen_prob, real_prob, disc_cost, gen_cost, w_distance = \
                             self.sess.run([self.fake_inputs_discrete, self.gen_prob, self.real_prob,self.disc_cost, self.gen_cost, self.w_distance],
                                           feed_dict={self.real_inputs_discrete: real_inputs_discrete,self.z: z})
+                        fig_w_distance[batch] = w_distance
+                        fig_d_loss_trains[batch] = disc_cost
+                        fig_g_loss_trains[batch] = gen_cost
+                        batch += 1
+
                         translate(gen_samples, self.i2w)
                         print("Epoch {}\niter {}\ndisc cost {}, real prob {}\ngen cost {}, gen prob {}\nw-distance {}\ntime{}"
                               .format(e, iter, disc_cost, real_prob, gen_cost, gen_prob, w_distance, timedelta(seconds=time.time() - epoch_start_time)))
@@ -222,6 +232,27 @@ class SA_GAN_SEQ(object):
                         break
 
 
+        print(fig_w_distance)
+        ###########################   绘图 start   #######################################
+        # 绘制曲线
+        fig, ax1 = plt.subplots()
+        ax2 = ax1.twinx()
+        lns1 = ax1.plot(np.arange(total_batch), fig_w_distance, label="w_distance")
+        # 按一定间隔显示实现方法
+        # ax2.plot(200 * np.arange(len(fig_accuracy)), fig_accuracy, 'r')
+        lns2 = ax2.plot(np.arange(total_batch), fig_d_loss_trains, 'r', label="d_loss")
+        lns3 = ax2.plot(np.arange(total_batch), fig_g_loss_trains, 'g', label="g_loss")
+        ax1.set_xlabel('iteration')
+        ax1.set_ylabel('w_distance')
+        ax2.set_ylabel('d_loss & g_loss')
+
+        # 合并图例
+        lns = lns1 + lns2 + lns3
+        labels = ["w_distance", "D_Loss", "G_Loss"]
+        # labels = [l.get_label() for l in lns]
+        plt.legend(lns, labels, loc=7)
+        plt.show()
+        ###########################   绘图 end   #######################################
 
 
 
