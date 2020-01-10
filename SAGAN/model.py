@@ -9,7 +9,6 @@ import os
 import tflib as lib
 import tflib.ops.linear
 import tflib.ops.conv1d
-import matplotlib.pyplot as plt
 
 class SA_GAN_SEQ(object):
     def __init__(self, sess, args, w2i, i2w):
@@ -84,7 +83,7 @@ class SA_GAN_SEQ(object):
 
         self.variable = tf.trainable_variables()
         self.gen_params = [v for v in self.variable if 'Generator' in v.op.name]
-        self.disc_params = [v for v in self.variable if 'discriminator' in v.op.name]
+        self.disc_params = [v for v in self.variable if 'Discriminator' in v.op.name]
 
         self.gen_train_op = tf.train.AdamOptimizer(learning_rate=1e-4, beta1=0.5, beta2=0.9).minimize(self.gen_cost,
                                                                                                  var_list=self.gen_params)
@@ -114,9 +113,6 @@ class SA_GAN_SEQ(object):
                                               training=is_training,
                                               causality=False)
                     x = ff(x, num_units=[self.d_ff, self.d_model])
-            x = tf.transpose(x, [0, 2, 1])# (batch_size, d_model , seq_len)
-            x = self.ResBlock('ResBlock', x)
-            x = tf.transpose(x, [0, 2, 1])
 
             weights = tf.Variable(tf.random_normal([self.d_model, self.vocab_size], stddev=0.1),
                                   name="weights")
@@ -124,46 +120,28 @@ class SA_GAN_SEQ(object):
             #res = tf.reshape(tf.argmax(logits, axis=2), [self.batch_size, self.seq_size])
         return tf.nn.softmax(logits)
 
-    def self_attention(self, input, is_training=True):
-        return multihead_attention(queries=input,
-                                  keys=input,
-                                  values=input,
-                                  num_heads=self.num_heads,
-                                  dropout_rate=self.dropout_rate,
-                                  training=is_training,
-                                  causality=False)
 
-    def discriminator(self, x, is_training=True):
+    def discriminator_(self, x, is_training=True):
         """
 
         """
         with tf.variable_scope("discriminator", reuse=tf.AUTO_REUSE):
-            output = tf.transpose(x, [0, 2, 1])  # (batch_size, vocab_size, seq_len)
-            output = lib.ops.conv1d.Conv1D('Conv1d.1', self.vocab_size, self.vocab_size, 5, output)
-            output = lib.ops.conv1d.Conv1D('Conv1d.2', self.vocab_size, self.vocab_size, 5, output)
-            output = lib.ops.conv1d.Conv1D('Conv1d.3', self.vocab_size, self.vocab_size, 5, output)
-            output = tf.transpose(output, [0, 2, 1])
-            output = self.self_attention(output, is_training)
-            output = tf.transpose(output, [0, 2, 1])
-            output = lib.ops.conv1d.Conv1D('Conv1d.4', self.vocab_size, self.vocab_size, 5, output)
-            output = tf.transpose(output, [0, 2, 1])
-            output = self.self_attention(output, is_training)
+            enc = tf.nn.embedding_lookup(self.embeddings, tf.argmax(x, axis=2))  # x's shape (batch_size, seq_size)
+            enc *= self.d_model ** 0.5
+            enc += positional_encoding(enc, self.seq_size)
+            enc = tf.layers.dropout(enc, self.dropout_rate, training=is_training)
 
-            # enc *= self.d_model ** 0.5
-            # enc += positional_encoding(enc, self.seq_size)
-            # enc = tf.layers.dropout(enc, self.dropout_rate, training=is_training)
-            #
-            # for i in range(self.num_blocks):
-            #     with tf.variable_scope("num_blocks_{}".format(i), reuse=tf.AUTO_REUSE):
-            #         enc = multihead_attention(queries=enc,
-            #                                   keys=enc,
-            #                                   values=enc,
-            #                                   num_heads=self.num_heads,
-            #                                   dropout_rate=self.dropout_rate,
-            #                                   training=is_training,
-            #                                   causality=False)
-            #         enc = ff(enc, num_units=[self.d_ff, self.d_model])
-            enc = tf.reshape(output, [self.batch_size, self.vocab_size * self.seq_size])
+            for i in range(self.num_blocks):
+                with tf.variable_scope("num_blocks_{}".format(i), reuse=tf.AUTO_REUSE):
+                    enc = multihead_attention(queries=enc,
+                                              keys=enc,
+                                              values=enc,
+                                              num_heads=self.num_heads,
+                                              dropout_rate=self.dropout_rate,
+                                              training=is_training,
+                                              causality=False)
+                    enc = ff(enc, num_units=[self.d_ff, self.d_model])
+            enc = tf.reshape(enc, [self.batch_size, self.d_model * self.seq_size])
             res = tf.layers.dense(enc, units=1)
         return res
 
@@ -175,7 +153,7 @@ class SA_GAN_SEQ(object):
         output = lib.ops.conv1d.Conv1D(name + '.2', self.d_model, self.d_model, 5, output)
         return inputs + (0.3 * output)
 
-    def discriminator_(self, x):
+    def discriminator(self, x):
         output = tf.transpose(x, [0, 2, 1])# (batch_size, vocab_size, seq_len)
         output = lib.ops.conv1d.Conv1D('Discriminator.Input', self.vocab_size, self.d_model, 1, output)
         output = self.ResBlock('Discriminator.1', output)
@@ -188,14 +166,10 @@ class SA_GAN_SEQ(object):
         return output
 
     def train(self, data):
-        batch = 0
+        iter = 0
         n_batch = len(data)//self.batch_size
         self.sess.run(tf.global_variables_initializer())
-        total_batch = n_batch//100 * self.epoch
-        print(n_batch//100 * self.epoch)
-        fig_w_distance = np.zeros([total_batch])
-        fig_d_loss_trains = np.zeros([total_batch])
-        fig_g_loss_trains = np.zeros([total_batch])
+
         for e in range(self.epoch):
             real_data = inf_train_gen(data, self.batch_size)
             epoch_start_time = time.time()
@@ -218,11 +192,6 @@ class SA_GAN_SEQ(object):
                         gen_samples, gen_prob, real_prob, disc_cost, gen_cost, w_distance = \
                             self.sess.run([self.fake_inputs_discrete, self.gen_prob, self.real_prob,self.disc_cost, self.gen_cost, self.w_distance],
                                           feed_dict={self.real_inputs_discrete: real_inputs_discrete,self.z: z})
-                        fig_w_distance[batch] = w_distance
-                        fig_d_loss_trains[batch] = disc_cost
-                        fig_g_loss_trains[batch] = gen_cost
-                        batch += 1
-
                         translate(gen_samples, self.i2w)
                         print("Epoch {}\niter {}\ndisc cost {}, real prob {}\ngen cost {}, gen prob {}\nw-distance {}\ntime{}"
                               .format(e, iter, disc_cost, real_prob, gen_cost, gen_prob, w_distance, timedelta(seconds=time.time() - epoch_start_time)))
@@ -232,27 +201,6 @@ class SA_GAN_SEQ(object):
                         break
 
 
-        print(fig_w_distance)
-        ###########################   绘图 start   #######################################
-        # 绘制曲线
-        fig, ax1 = plt.subplots()
-        ax2 = ax1.twinx()
-        lns1 = ax1.plot(np.arange(total_batch), fig_w_distance, label="w_distance")
-        # 按一定间隔显示实现方法
-        # ax2.plot(200 * np.arange(len(fig_accuracy)), fig_accuracy, 'r')
-        lns2 = ax2.plot(np.arange(total_batch), fig_d_loss_trains, 'r', label="d_loss")
-        lns3 = ax2.plot(np.arange(total_batch), fig_g_loss_trains, 'g', label="g_loss")
-        ax1.set_xlabel('iteration')
-        ax1.set_ylabel('w_distance')
-        ax2.set_ylabel('d_loss & g_loss')
-
-        # 合并图例
-        lns = lns1 + lns2 + lns3
-        labels = ["w_distance", "D_Loss", "G_Loss"]
-        # labels = [l.get_label() for l in lns]
-        plt.legend(lns, labels, loc=7)
-        plt.show()
-        ###########################   绘图 end   #######################################
 
 
 
