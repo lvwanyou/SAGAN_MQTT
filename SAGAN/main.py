@@ -9,8 +9,8 @@ def parse_args():
     parser.add_argument('--phase', type=str, default='train', help='mode')
 
     parser.add_argument('--data_file', type=str,
-                        default='data/generated_write_single_register_1.txt')
-    parser.add_argument('--vocab_file', type=str, default='vocab')
+                        default='data/cases_c2s_5w_len60.txt')   #  'data/generated_write_single_register_1.txt'
+    parser.add_argument('--vocab_file', type=str, default='data/vocabularty')
     parser.add_argument('--logdir', type=str, default='log')
 
     parser.add_argument('--z_dim', type=int, default=10)

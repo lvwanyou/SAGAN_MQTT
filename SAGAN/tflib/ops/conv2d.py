@@ -41,8 +41,8 @@ def Conv2D(name, input_dim, output_dim, filter_size, inputs, he_init=True, mask_
             mask[center, center+1:, :, :] = 0.
 
             # Mask out future channels
-            for i in xrange(mask_n_channels):
-                for j in xrange(mask_n_channels):
+            for i in range(mask_n_channels):
+                for j in range(mask_n_channels):
                     if (mask_type=='a' and i >= j) or (mask_type=='b' and i > j):
                         mask[
                             center,
@@ -106,9 +106,9 @@ def Conv2D(name, input_dim, output_dim, filter_size, inputs, he_init=True, mask_
         result = tf.nn.conv2d(
             input=inputs, 
             filter=filters, 
-            strides=[1, 1, stride, stride],
+            strides=[1,  stride, stride , 1],
             padding='SAME',
-            data_format='NCHW'
+            data_format='NHWC'
         )
 
         if biases:
@@ -117,7 +117,7 @@ def Conv2D(name, input_dim, output_dim, filter_size, inputs, he_init=True, mask_
                 np.zeros(output_dim, dtype='float32')
             )
 
-            result = tf.nn.bias_add(result, _biases, data_format='NCHW')
+            result = tf.nn.bias_add(result, _biases, data_format='NHWC')
 
 
         return result

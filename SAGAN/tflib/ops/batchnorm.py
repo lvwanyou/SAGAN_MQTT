@@ -3,6 +3,7 @@ import tflib as lib
 import numpy as np
 import tensorflow as tf
 
+
 def Batchnorm(name, axes, inputs, is_training=None, stats_iter=None, update_moving_stats=True, fused=True):
     if ((axes == [0,2,3]) or (axes == [0,2])) and fused==True:
         if axes==[0,2]:
@@ -27,7 +28,7 @@ def Batchnorm(name, axes, inputs, is_training=None, stats_iter=None, update_movi
         moving_variance = lib.param(name+'.moving_variance', np.ones(inputs.get_shape()[1], dtype='float32'), trainable=False)
 
         def _fused_batch_norm_training():
-            return tf.nn.fused_batch_norm(inputs, scale, offset, epsilon=1e-5, data_format='NCHW')
+            return tf.nn.fused_batch_norm(inputs, scale, offset, epsilon=1e-5, data_format='NHWC')
         def _fused_batch_norm_inference():
             # Version which blends in the current item's statistics
             batch_size = tf.cast(tf.shape(inputs)[0], 'float32')
@@ -41,7 +42,7 @@ def Batchnorm(name, axes, inputs, is_training=None, stats_iter=None, update_movi
             #     inputs,
             #     scale,
             #     offset,
-            #     epsilon=1e-2, 
+            #     epsilon=1e-2,
             #     mean=moving_mean,
             #     variance=moving_variance,
             #     is_training=False,
@@ -77,7 +78,7 @@ def Batchnorm(name, axes, inputs, is_training=None, stats_iter=None, update_movi
         mean, var = tf.nn.moments(inputs, axes, keep_dims=True)
         shape = mean.get_shape().as_list()
         if 0 not in axes:
-            print "WARNING ({}): didn't find 0 in axes, but not using separate BN params for each item in batch".format(name)
+            print("WARNING ({}): didn't find 0 in axes, but not using separate BN params for each item in batch".format(name))
             shape[0] = 1
         offset = lib.param(name+'.offset', np.zeros(shape, dtype='float32'))
         scale = lib.param(name+'.scale', np.ones(shape, dtype='float32'))
