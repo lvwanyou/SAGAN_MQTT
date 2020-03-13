@@ -9,22 +9,22 @@ def parse_args():
     parser.add_argument('--phase', type=str, default='train', help='mode')
 
     parser.add_argument('--data_file', type=str,
-                        default='data/cases_c2s_5w_len60.txt')   #  'data/generated_write_single_register_1.txt'
+                        default='data/generated_write_single_register_1.txt')   #  'data/generated_write_single_register_1.txt'
     parser.add_argument('--vocab_file', type=str, default='vocab')
     parser.add_argument('--logdir', type=str, default='log')
 
     parser.add_argument('--z_dim', type=int, default=10)
 
-    parser.add_argument('--critic_iters', type=int, default=5)
+    parser.add_argument('--critic_iters', type=int, default=2)
     parser.add_argument('--LAMBDA', type=int, default=10)
-    parser.add_argument('--seq_size', type=int, default=60)
+    parser.add_argument('--seq_size', type=int, default=24)
     parser.add_argument('--batch_size', type=int, default=32)
-    parser.add_argument('--epoch', type=int, default=5)
+    parser.add_argument('--epoch', type=int, default=3)
     parser.add_argument('--iteration', type=int, default=10000)
     parser.add_argument('--sample_num', type=int, default=10)
     parser.add_argument('--d_model', type=int, default=20)
     parser.add_argument('--num_blocks', type=int, default=1)
-    parser.add_argument('--num_heads', type=int, default=2)
+    parser.add_argument('--num_heads', type=int, default=1)
     parser.add_argument('--vocab_size', type=int, default=16)
     parser.add_argument('--dropout_rate', type=float, default=0.3)
     parser.add_argument('--d_ff', type=int, default=64)

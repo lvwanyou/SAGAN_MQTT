@@ -16,6 +16,18 @@ def inf_train_gen(data, batch_size):
     for i in range(n_batches):
         yield data[i * batch_size:(i+1) * batch_size]
 
+def save_gen_samples(generate_data, i2w, e):
+
+    res = []
+    for data in generate_data:
+        for i in range(len(data)):
+            res.append([i2w[int(index)] for index in data[i]])
+
+    with open('output/epoch' + str(e) + '_generate_data.txt', 'w+') as f:
+        for i in range(len(res)):
+            f.write(''.join(res[i])+'\n')
+    print("Saved epoch " + str(e) + " generate data.")
+
 def translate(data, i2w):
     res = []
     for i in range(len(data)):
