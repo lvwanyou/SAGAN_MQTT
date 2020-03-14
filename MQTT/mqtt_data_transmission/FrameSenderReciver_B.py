@@ -51,6 +51,7 @@ if __name__ == '__main__':
                     req_string = dataSwitch(req_val.strip('\n'))  # switch hex to bit for sending it to the simulations
                     s.send(req_string)
                     sum_count = len(content)
+                    req_ack = s.recv(BUFFER_SIZE).hex()  # 获取连接请求回应数据包
                     for i in tqdm(range(len(content))):
                         if i >= count:
                             val = content[i]
@@ -84,7 +85,7 @@ if __name__ == '__main__':
                 finally:
                     if count >= sum_count:
                         log_sum = "Error ratio :" + str(error_count) + "/" + str(sum_count) + ";  Acceptance : {:.3%}".format(
-                            error_count / sum_count)
+                            1 - (error_count / sum_count))
                         print(log_sum)
                         f_log.write(log_sum)
         except:
