@@ -32,9 +32,8 @@ def MQTT_collect2server():
 
 
 if __name__ == '__main__':
-    py_location = "MQTT/mqtt_data_transmission/FrameSenderReciver_B.py"
-    train_data_path = 'Data/output'
-    seek_number = 10
+    train_data_path = 'Data/output/epoch40_generate_data_new.txt'
+    seek_number = 500
 
     global sum_count
     global BUFFER_SIZE
@@ -65,7 +64,7 @@ if __name__ == '__main__':
         log_file_name = files_dict[file_path]
         print("tested file path : " + file_path + "\n" + "log file name : " + log_file_name)
         with open(log_file_name,
-                  "r+") as f_log:
+                  "a+") as f_log:
             f_log.seek(0)
             f_log.truncate()
             try:
@@ -110,7 +109,7 @@ if __name__ == '__main__':
                             log_sum = "Total tested packed number : " + str(seek_number) + "\n"\
                                 "Fatal error count : " + str(fatal_error_count) + "\nConventional error count :" + str(conventional_error_count) + "\n" \
                                       "Error rate :" + str(fatal_error_count + conventional_error_count) + "/" + str(sum_count) + "; \n" \
-                                     "Acceptance(1 - Fatal/Sum) : {:.3%}  \nFormed packet rate(1 - Malformed packet/Sum) :{:.3%}".format(1 - (fatal_error_count / sum_count), 1 - (conventional_error_count / sum_count))
+                                     "Acceptance(1 - Fatal/Sum) : {:.3%}  \nBug rate(1 - Malformed packet/Sum) :{:.3%}".format(1 - (fatal_error_count / sum_count), 1 - (conventional_error_count / sum_count))
                             print(log_sum)
                             f_log.write(log_sum)
             except e:
