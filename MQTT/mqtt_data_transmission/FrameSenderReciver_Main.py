@@ -32,7 +32,7 @@ def MQTT_collect2server():
 
 
 if __name__ == '__main__':
-    train_data_path = 'Data/output/epoch40_generate_data_new.txt'
+    train_data_path = 'Data/output'
     seek_number = 500
 
     global sum_count
@@ -112,7 +112,7 @@ if __name__ == '__main__':
                                      "Acceptance(1 - Fatal/Sum) : {:.3%}  \nBug rate(1 - Malformed packet/Sum) :{:.3%}".format(1 - (fatal_error_count / sum_count), 1 - (conventional_error_count / sum_count))
                             print(log_sum)
                             f_log.write(log_sum)
-            except e:
+            except:
                 None
             finally:
                 f_log.close()
