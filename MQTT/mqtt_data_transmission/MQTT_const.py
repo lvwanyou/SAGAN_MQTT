@@ -21,10 +21,11 @@ username = 'username'
 # 密码
 password = 'password'
 # 定义每个client loop 次数
-loop_count = 10000
+loop_count = 100000
 # 定义每个client 是否永真loop
 flag = False
-
+# 定义Qos 上界
+qos_top = 1
 # ======================================================
 def on_connect(mqttc, obj, rc):
     print("OnConnetc, rc: " + str(rc))

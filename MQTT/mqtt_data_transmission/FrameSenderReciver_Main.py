@@ -34,7 +34,7 @@ def MQTT_collect2server():
 if __name__ == '__main__':
     train_data_path = 'Data/mqtt_template.txt'
     # train_data_path = 'Data/output'
-    seek_number = 5
+    seek_number = 50
 
     global sum_count
     global BUFFER_SIZE
@@ -90,11 +90,17 @@ if __name__ == '__main__':
                                 try:
                                     data = s.recv(BUFFER_SIZE)
                                 except IOError as e:
-                                    fatal_error_count += 1
-                                    fatal_error_list.append(val)
-                                    f_log.write('\n Fatal error! ########################################## \n')
-                                    f_log.write('\n')
-                                    print('No. ' + str(i) + " rejected by server; content: " + val)
+                                    # '30' qos=0:最小的等级就是 0。并且它保证一次信息尽力交付。一个消息不会被接收端应答，也不会被发送者存储并再发送。这个也被叫做“即发即弃”。
+                                    if string.hex()[0:2] == '30':
+                                        f_log.write('\n')
+                                        f_log.write("==> No." + str(i) + ' RX : None \n')
+                                        f_log.write('\n')
+                                    else:
+                                        fatal_error_count += 1
+                                        fatal_error_list.append(val)
+                                        f_log.write('\n Fatal error! ########################################## \n')
+                                        f_log.write('\n')
+                                        print('No. ' + str(i) + " rejected by server; content: " + val)
                                     MQTT_collect2server()
                                     continue
 

@@ -38,7 +38,7 @@ if __name__ == '__main__':
         loop_count = sys.maxint
     # 循环操作
     for i in tqdm(range(loop_count)):
-        Qos = np.random.randint(0, 3)  # 随机选择一个Qos;  [0,1,2]
+        Qos = np.random.randint(0, MQTT_const.qos_top)  # 随机选择一个Qos;  [0,1,2]
 
         """
         根据随机令牌的值判定是否需要订阅消息

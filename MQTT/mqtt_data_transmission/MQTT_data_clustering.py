@@ -5,7 +5,7 @@ clustering via the length of bytes
 """
 #################################
 len_bytes = {}
-origin_file_path = 'Data/cases_c2s_5w.txt'
+origin_file_path = 'Data/cases_clients2server.txt'
 with open(origin_file_path, 'r') as f:
     try:
         content = f.readlines()

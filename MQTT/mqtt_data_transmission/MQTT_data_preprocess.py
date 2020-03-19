@@ -6,7 +6,7 @@ import MQTT.mqtt_data_transmission.MQTT_const as MQTT_const
 # 读取 [{字典},{字典},{字典},{字典}] 类型的 json 文件：
 # 设置以utf-8解码模式读取文件，encoding参数必须设置，否则默认以gbk模式读取文件，当文件中包含中文时，会报错
 def json_dict():
-    f = open("MQTT/preprocessing_data/origin_data.json", encoding='utf-8')
+    f = open("MQTT/preprocessing_data/aaaa.json", encoding='utf-8')
     f_s2c = open("MQTT/preprocessing_data/cases_server2clients.txt", "w+")
     f_c2s = open("MQTT/preprocessing_data/cases_clients2server.txt", "w+")
     pop_datas = json.load(f)

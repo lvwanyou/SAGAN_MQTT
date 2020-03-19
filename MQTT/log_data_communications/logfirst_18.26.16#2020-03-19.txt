@@ -1,0 +1,9 @@
+ No.0 TX :301a0006746f70696335313538343533363139312e35383131363934
+==> No.0 RX : None 
+
+Total tested packed number : 1
+Fatal error count : 0
+Conventional error count :0
+Error rate :0/1; 
+Acceptance(1 - Fatal/Sum) : 100.000%  
+Bug rate(Malformed packet/Sum) :0.000%
