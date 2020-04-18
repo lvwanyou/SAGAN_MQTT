@@ -1,0 +1,61 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{stfloats} %针对双栏图 实现h t b p
+\usepackage{makecell} %表格中一个单元格的文字换行
+\usepackage{threeparttable} %表格注解
+\usepackage{enumitem}  % item缩进
+\usepackage{array}   % 表格内文字居中
+\usepackage{booktabs}
+\input{Packages_Commands}
+
+\begin{document}
+
+\title{SAGANFuzzer: A Deep Adversarial Networks based Industrial Control Protocol Fuzzing Framework from a Self-Attention Perspective \\}
+%\input{Sections/Authors}
+\author{Wanyou Lv$^{1}$ \and
+	Bohao Wang$^{2}$ \and
+	Zhihui Li$^{3}$ \and
+	Jianqi Shi$^{3,*}$ \and
+	Yanhong Huang$^{4}$
+}
+
+%\authorrunning{Short form of author list} % if too long for running head
+
+
+%\date{Received: date / Accepted: date}
+\date{2020/04/07}
+% The correct dates will be entered by the editor
+
+% Comment for arXiv
+%\titlerunning{Journal of Intelligent Manufacturing}
+%\authorrunning{Journal of Intelligent Manufacturing}
+
+%\titlerunning{
+
+\maketitle
+
+\begin{abstract}
+The Industrial Control Protocol (ICP) is the cornerstone of the communication of the Industrial Control System (ICS).
+%, and its importance to the ICS is self-evident. 
+If the security of ICPs can be guaranteed, the security of ICSs can be guaranteed to a large extent. However, due to the strong diversity of the industrial control environment applicable to ICPs which causes the meaning of the same parameter in different applications varies greatly, it is difficult for testers to formulate a series of universal security rules. Therefore, fuzz testing (fuzzing) has already become the main method of detecting vulnerabilities in ICPs. However, the process of fuzzing relies heavily on the specification of ICPs. And it will take a lot of time and manual engineering to analyze and understand the specification. In this paper, we proposed a new simple and smart sequence generation neural network framework based on Improved Self-Attention Generative Adversarial Networks (SAGAN), called SAGANFuzzer, to solve the problems. Moreover, we put forward a series of performance metrics in the field of fuzzing to evaluate different models. Compared with traditional methods, our framework can generate massive fake but plausible test protocol message automatically in a short time without protocol specification; compared with other deep learning works for fuzzing, our framework can not only test multi-dimensional input effectively but also increase the probability of vulnerabilities being triggered while being more parallelizable and requiring significantly less time to train. We evaluate its performance by testing several typical ICPs, including MQTT and Modbus. Extensive experiments demonstrate significant improvements over test effectiveness and efficiency: the accuracy of correctly generating test case packages is 86.08\% and 92.71\% in different data scales, the F-measure reaches 82.08\% and 85.02\%, and the test effectiveness and efficiency are 8.03\% and 5.26\% higher than the WGAN-based model.
+
+%correctly generates the format and message content of the test case package. 其准确率分别为86.08%、92.71%，，F-measure分别达到了82.08%和85.02%，测试有效性和效率比WGAN-based model分别高了8.03%，5.26%。   
+%\textcolor[rgb]{1,0,0}{\#\#\#\#\#\#\#\#  Here can specify specific values.}
+\end{abstract}
+
+\begin{IEEEkeywords}
+deep adversarial learning, self-attention, convolution neural networks, fuzz testing, industrial control protocol
+\end{IEEEkeywords}
+
+\input{Sections/Introduction}
+%\input{Sections/Preliminary}
+\input{Sections/Related_Work}
+\input{Sections/Fuzzer_Framework}
+\input{Sections/Experiment}
+\input{Sections/Conclusions}
+
+\nocite{*}
+\bibliographystyle{IEEEtran}
+\bibliography{Reference}
+
+\end{document}

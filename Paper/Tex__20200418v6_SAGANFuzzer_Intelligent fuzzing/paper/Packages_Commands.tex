@@ -1,0 +1,158 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Comments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{verbatim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[varg]{txfonts}
+\usepackage{float}
+\usepackage{bm}
+\usepackage{eqparbox}
+\usepackage{booktabs}
+\usepackage{stmaryrd}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{epsfig,graphics}
+\usepackage{amsmath}
+\usepackage{wasysym}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{url}
+
+%\usepackage{algpseudocode}
+%\usepackage{appendix}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{pgfplots} % used for showing all the figure
+\pgfplotsset{
+	compat=1.5
+}
+
+%\usepackage{cite}
+\usepackage{amsfonts}
+
+%算法部分
+\usepackage{algorithm}
+%\usepackage[ruled]{algorithm2e}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}  %缩进
+\usepackage{textcomp}  %命令\textacutedbl 的包,二阶导符号
+%\usepackage{authblk} %作者方式二 需要用的包。
+\usepackage{xcolor}
+%表格的合并 行合并
+\usepackage{multirow}
+%这个是我加的用来注释的
+%\usepackage{comment}
+
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+
+\usepgfplotslibrary{groupplots}
+%\usepackage[ngerman]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Algorithm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[]{algorithm2e}
+%\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{multicol}
+\usepackage{algpseudocode}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\Real}{{\mathbb R}}
+\newcommand{\Inh}[2]{\mathsf{Inh}\mathsf{(#1, #2)}}
+\newcommand{\Cal}[2]{\mathsf{Cal}\mathsf{(#1, #2)}}
+\newcommand{\Con}[2]{\mathsf{Con}\mathsf{(#1, #2)}}
+\newcommand{\Cre}[2]{\mathsf{Cre}\mathsf{(#1, #2)}}
+\newcommand{\Ref}[2]{\mathsf{Ref}\mathsf{(#1, #2)}}
+\newcommand{\rand}{\wedge}
+\newcommand{\ror}{\vee}
+\newcommand{\rimply}{\Rightarrow}
+\newcommand{\rr}{\rightarrow}
+\newcommand{\nr}{\rightsquigarrow}
+\newcommand{\rnot}{!}
+\newcommand{\Instances}[1]{\mathsf{Inst}\mathsf{(#1)}}
+\newcommand{\TypeOf}[1]{\mathsf{Type}\mathsf{(#1)}}
+\newcommand{\AttrValue}[2]{\mathsf{AttrVal}\mathsf{(#1, #2)}}
+\newcommand{\Value}[1]{\mathsf{Val}\mathsf{(#1)}}
+\newcommand{\InitialValue}[1]{\mathsf{InitVal}\mathsf{(#1)}}
+\newcommand{\Contains}[2]{\mathsf{Con}\mathsf{(#1, #2)}}
+\newcommand{\patomic}{\mathsf{atomic}}
+\newcommand{\pskip}{\mathsf{skip}}
+\newcommand{\pmf}[1]{\mathsf{#1}}
+\newcommand{\szihao}{\fontsize{1pt}{1pt}\selectfont}
+\newcommand{\sfrac}{\szihao \dfrac}
+\newcommand{\WI}[1]{\texttt{#1}}
+\newcommand{\cname}[1]{{\small ${#1}$}}
+%\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}  % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+\usepackage[square, comma, sort&compress, numbers]{natbib}
+\usepackage{color}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\usepackage{epstopdf}
+
+\usepackage[colorlinks,
+            linkcolor=black,
+            anchorcolor=black,
+            citecolor=blue,
+			urlcolor=black,
+            bookmarks=true
+            ]{hyperref}
+
+
+\newcommand{\TODO}[2]{{\textcolor{blue}{#1}}$\to${\textcolor{red}{#2}}}
+\newcommand{\SOLVED}[2]{#2}
+\newcommand{\HIGHLIGHT}[1]{{\textcolor{red}{#1}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\lds}[4]{
+$\bb{#1}\sfbe{
+	#2
+}~=~
+	\lambda #3.
+(
+	#4
+)$}
+
+
+
+\newcommand{\sfbe}[1]{\llbracket~#1~\rrbracket}
+
+\newcommand{\denotationalsemantics}[4]{
+{\footnotesize$
+\bb{#1}\llbracket
+	#2
+\rrbracket=~\{
+	#3
+		~\mid~
+	#4
+\}$}}
+\newcommand{\ins}[1]{$\lfloor$#1$\rceil$}
+\newcommand{\lr}{\longrightarrow}
+\newcommand{\bb}[1]{{\mathbb{#1}}}
+\newcommand{\sfb}[1]{\textlbrackdbl~#1~\textrbrackdbl}
+\newcommand{\la}{\langle}
+
+\newcommand{\ra}{\rangle}
+\newcommand{\nit}{\noindent}
+\newcommand{\fbv}{formula_{bv}}
+\newcommand{\s}{\sigma}
+\newcommand{\sip}{\sigma^\prime}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\code}[1]{{\texttt{#1}}}
+\newcommand{\address}[1]{{\textcolor{gray}{\texttt{#1}}}}
+\newcommand{\haddress}[1]{{\textcolor{blue}{\texttt{#1}}}}
+\newcommand{\hcode}[1]{{\textcolor{blue}{\texttt{#1}}}} 

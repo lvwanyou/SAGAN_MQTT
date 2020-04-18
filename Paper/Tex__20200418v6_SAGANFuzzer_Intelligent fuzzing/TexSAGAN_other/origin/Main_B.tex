@@ -1,0 +1,35 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{stfloats} %针对双栏图 实现h t b p
+\usepackage{makecell} %表格中一个单元格的文字换行
+\usepackage{threeparttable} %表格注解
+\usepackage{enumitem}  % item缩进
+\usepackage{array}   % 表格内文字居中
+\input{Packages_Commands}
+
+\begin{document}
+
+\title{BLSTM-DCNNFuzz: A Deep Convolution Generative Adversarial Networks Based Framework For Industry Control Protocols Fuzzing \\}
+%\input{Sections/Authors}
+\maketitle
+
+\begin{abstract}
+A growing awareness is brought that the safety and security of Industrial Control Systems (ICS) cannot be dealt with in isolation and the safety and security of industrial control protocols (ICPs) should be considered jointly. Fuzz testing (fuzzing) for ICP is a common way to discover whether the ICP itself is designed and implemented with flaws and network security vulnerability. The traditional fuzzing test methods promote ICP safety and security testing and many of them have practical applications. However, they rely heavily on the specification of ICPs protocol, which causes the test process is a costly, time-consuming, troublesome, and boring task and hard to be repeated if the specification does not exist. In this study, a smart and automatical protocol fuzzing methodology based on Improved Deep Convolution Generative Adversarial Networks (DCGAN) and a series of performance metrics are proposed. An automatically and intelligent fuzzing framework BLSTM-DCNNFuzz for application is designed. Several typical ICPs, including Modbus and EtherCAT, are applied to test its effectiveness and efficiency. Experiment results show that, compared with General Purpose Fuzzer(GPF) and other fuzzing test methods based on deep learning, our methodology is more convenient, more effective and more efficient.
+\end{abstract}
+
+\begin{IEEEkeywords}
+convolution neural networks, long short-term memory, deep adversarial learning, fuzz testing, industrial control protocol
+\end{IEEEkeywords}
+
+\input{Sections/Introduction}
+\input{Sections/Preliminary}
+\input{Sections/Fuzzer_Framework}
+\input{Sections/Experiment}
+\input{Sections/Related_Work}
+\input{Sections/Conclusions}
+
+\nocite{*}
+\bibliographystyle{IEEEtran}
+\bibliography{Reference}
+
+\end{document}
