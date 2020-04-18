@@ -153,7 +153,19 @@ There is a huge difference in the training time of different GPF and the time of
 	\label{FIGURE_EFVD}
 \end{figure}
 
-%\subsubsection{Potential Vulnerabilities Found}
+\subsubsection{Potential Vulnerabilities Found}
+Due to limited space, we mainly talk about one exception that we analyzed, which is \textit{\textbf{Buffer Exception}}.
+
+When the mosquitto broker receives message frames from the client, it will store data into the buffer. And it will parse the message frames based on the MQTT protocol grammar without checking the whole message length. That is, the broker truncates the message frames according to the reamining length in the MQTT protocol only. The part of the data that exceeds the remaining length will be left in the buffer, which will cause the problem of no answering of the following message frames.
+
+As the fig shows, in $step1$, we send the generated message frames formed by green and red box part to the broker, where the green box part is a complete MQTT message frame and the red box part is additional. The mixed message frame is stored in the buffer first. Then, the broker only parses the green part of the message frames correctly and the red part is left in the buffer. In this situation, the broker has treated \textbf{0x32 0xff 0xff 0xff 0x7f} as the part of the message header of the next message frame. In $step2$, when real next message frames arrived at the buffer, the broker has considered 268 million as the remaining length of this message frame. It means the following message frames in green boxes and the previous red part should form a message frame with a length of about 268 million. This will make the communication invalid between the client and the broker for a period of time unless the buffer is full or the length of the message frames reach 268 million.
+
+\begin{figure}[h]   %  插入一栏图片
+	\centering 
+	\includegraphics[width=3.5in]{FigSAGANFuzzer_BufferException.pdf}
+	\caption{Potential vulnerabilities analysis}
+	\label{generator}
+\end{figure}
 
 \subsubsection{Applying The Method to Modbus-TCP}
 As shown in Table \ref{table_MQTT}, we detect these potential vulnerabilities, including slave crash, station off-line, working counter attack, using abnormal function code and so on, in Modbus-TCP via the new trained SAGANFuzzer. In the experiment, we send the generated data messages $S_i$ to the slave stations and record the corresponding received message $R_i$. Massive message pairs $<S_i, R_i>$ are obtained. According to the abnormal protocol characterization above, we analyze and compare the specified field values and obtained the following statistical results. Experiments on the Modbus-TCP protocol prove that our method has great versatility.% {350pt}{lcc}
