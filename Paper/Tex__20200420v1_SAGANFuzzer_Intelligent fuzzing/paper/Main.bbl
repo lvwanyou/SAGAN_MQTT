@@ -21,6 +21,11 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{lasi2014industry}
+H.~Lasi, P.~Fettke, H.-G. Kemper, T.~Feld, and M.~Hoffmann, ``Industry 4.0,''
+  \emph{Business \& information systems engineering}, vol.~6, no.~4, pp.
+  239--242, 2014.
+
 \bibitem{arjovsky2017wasserstein}
 M.~Arjovsky, S.~Chintala, and L.~Bottou, ``Wasserstein gan,'' \emph{arXiv
   preprint arXiv:1701.07875}, 2017.
@@ -69,18 +74,8 @@ D.~Aitel, ``An introduction to spike, the fuzzer creation kit,''
 \bibitem{amini2010sulley}
 P.~Amini and A.~Portnoy, ``Sulley fuzzing framework,'' 2010.
 
-\bibitem{gorbunov2010autofuzz}
-S.~Gorbunov and A.~Rosenbloom, ``Autofuzz: Automated network protocol fuzzing
-  framework,'' \emph{IJCSNS}, vol.~10, no.~8, p. 239, 2010.
-
 \bibitem{eddington2011peach}
 M.~Eddington, ``Peach fuzzing platform,'' \emph{Peach Fuzzer}, vol.~34, 2011.
-
-\bibitem{tsankov2012secfuzz}
-P.~Tsankov, M.~T. Dashti, and D.~Basin, ``Secfuzz: Fuzz-testing security
-  protocols,'' in \emph{2012 7th International Workshop on Automation of
-  Software Test (AST)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2012, pp.
-  1--7.
 
 \bibitem{chen2018iotfuzzer}
 J.~Chen, W.~Diao, Q.~Zhao, C.~Zuo, Z.~Lin, X.~Wang, W.~C. Lau, M.~Sun, R.~Yang,
@@ -232,6 +227,12 @@ J.~DeMott, R.~Enbody, and W.~F. Punch, ``Revolutionizing the field of grey-box
 M.~Li, J.~Lin, Y.~Ding, Z.~Liu, J.-Y. Zhu, and S.~Han, ``Gan compression:
   Efficient architectures for interactive conditional gans,'' \emph{arXiv
   preprint arXiv:2003.08936}, 2020.
+
+\bibitem{tsankov2012secfuzz}
+P.~Tsankov, M.~T. Dashti, and D.~Basin, ``Secfuzz: Fuzz-testing security
+  protocols,'' in \emph{2012 7th International Workshop on Automation of
+  Software Test (AST)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2012, pp.
+  1--7.
 
 \bibitem{paho2018mqtt}
 E.~Paho-MQTT, ``Mqtt-sn software,'' 2018.

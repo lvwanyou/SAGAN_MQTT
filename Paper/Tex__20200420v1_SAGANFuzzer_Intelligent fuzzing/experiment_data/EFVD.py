@@ -47,7 +47,7 @@ plt.yticks(size=13)
 
 #color 线条颜色 ms 点的大小，mec 点的外色，mfc点的内色，marker点的形式，
 # plt.plot(x, y1, marker='s', mec='b', mfc='lightblue',ms='6',label='WGAN-based Method',linewidth=1,color='lightblue')
-plt.plot(x, y1, marker='s', mec='b', mfc='lightblue',ms='6',label='SAGANFuzzer',linewidth=1,)
+plt.plot(x, y1, marker='s', mec='b', mfc='lightblue',ms='6',label='HexGANFuzzer',linewidth=1,)
 plt.plot(x, y2, marker='o',label='WGAN-based model', linewidth=1)
 plt.plot(x, y3, marker='v',label='LSTM-based model', linewidth=1)
 plt.plot(x, y4, marker='^',label='CNN-1D', linewidth=1)

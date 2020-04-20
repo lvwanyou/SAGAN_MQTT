@@ -1,5 +1,6 @@
 \section{Experiment and Result Analysis}
-In this section, MQTT and Modbus are chosen as our test targets from a variety of ICPs in the experiment. We generate a lot of test cases using the generative model. Then the generated data is used to stress test the target and trigger anomalies of the ICP. Finally,  according to the anomalies triggered, vulnerabilities in the anomalies are submitted for the improvement of the ICP after analysis to find the reason for the target anomalies. We evaluate the effectiveness of the proposed method by experimentation. 
+In this section, MQTT and Modbus are chosen as our target protocols from a variety of ICPs in the experiment. We generate large amounts of test cases by our generative model. Then the generated data is used to stress test the target and trigger anomalies of the ICP. Finally,  according to the anomalies triggered, vulnerabilities in the anomalies will be submitted for the improvement of the ICP after analysis. We evaluate various aspects of performance of our method by experimentation. 
+% to find the reason for the target anomalies
 
 \subsection{Environment construction of MQTT and Modbus}
 To show the effectiveness and efficiency of our framework, we apply it to test MQTT, one of the mainstream ICPs. To indicate the versatility of our method, another ICP, Modbus, is also used to test.
@@ -17,14 +18,22 @@ MQTT (Message Queuing Telemetry Transport) protocol is an application layer ICP 
 In the experiment, we utilize Mosquitto v1.5.8 \cite{light2017mosquitto} as the open-source message broker of message push ICP MQTT v3.1 and  Paho-MQTT v1.0.2 \cite{light2017mosquitto} as the MQTT client. 
 
 \subsubsection{Modbust-TCP}
-There are many variants of Modbus, including Modbus-TCP, Modbus-UDP and so on. We choose Modbus-TCP as another fuzzing ICP in this study. It uses master-slave communication mode, in which the master communicates with the slave by sending and receiving data frames \cite{swales1999open}. 
+There are many variants of Modbus, including Modbus-TCP, Modbus-UDP and so on. We choose Modbus-TCP as another fuzzing ICP in this study. It uses master-slave communication mode, in which the master communicates with slaves by actively sending data frames \cite{swales1999open}. 
+% and receiving 
 
 \subsection{Evaluation Setup}
 \subsubsection{Experimental Environment}
 Tensorflow, one of the popular deep learning framework in the industrial community, is adopted to implement the model architecture. To improve the training efficiency, we train the model on a machine with 8 processors (Intel(R) Core (TM) i7-6700K CPU@4.00GHz)  16.0GB memory (RAM) Nvidia GeForce GTX 1080 Ti (11GB) and 64-bit ubuntu16.04, x64-based processor. When launching an attack, the simulators run on another machine with 4 processors (Intel (R) Core (TM) i5-5300U CPU@2.30GHz) 16.00GB memory (RAM) and 64-bit Microsoft Windows 10 Professional Operating System, x64-based processor.
 
+%\subsubsection{Model Training Setting}
+%As for the parameter setting, we initialize all weights from zero-centered Normal distribution with a standard deviation of 0.2, which can increase diversity to a certain extent. The mini-batch size is set to 32 in all models based on a large amount of training data. The $keep\_prob$ hyperparameter of dropout is set to 0.7. The learning rate of G and D is set to 0.0001 and 0.0004 in the Adam optimizer. As to the checkpoint in the generative model, the interval of model saving frequency is set to 10. We train the models for 100 epochs and save the generator model for every 10 epochs to get plentiful test cases.
 \subsubsection{Model Training Setting}
-As for the parameter setting, we initialize all weights from zero-centered Normal distribution with a standard deviation of 0.2, which can increase diversity to a certain extent. The mini-batch size is set to 32 in all models based on a large amount of training data. The $keep\_prob$ hyperparameter of dropout is set to 0.7. The learning rate of G and D is set to 0.0001 and 0.0004 in the Adam optimizer. As to the checkpoint in the generative model, the interval of model saving frequency is set to 10. We train the models for 100 epochs and save the generator model for every 10 epochs to get plentiful test cases.
+As for the parameter setting, we initialize all weights from zero-centered Normal distribution with a standard deviation of 0.2, which can increase diversity to a certain extent. The mini-batch size is set to 64 in all models based on a large amount of training data. The $keep\_prob$ hyperparameter of dropout is set to 0.7. 
+The learning rate of Generator and Critic is set to 0.0001 and 0.0004 in the Adam optimizer. 
+$\lambda$ in the loss equation of Critic is 10. The dimension of the initial noise $zd$ is 10 and feature dimension $dm$ is 50.
+The repeat times of the transfomer block is 4 and the number of heads is 2.
+We train the models for 100 epochs and save the generator model for every 10 epochs to get plentiful test cases.
+
 
 \subsection{Fuzz Testing The Target ICP}
 With the trained model, we generate test cases, input the system under test, and implement the fuzzy test process according to the standard fuzzy test process. In the process of inputting test cases into ICSs under test, we monitor the system in real time. If anomalies occur in the process, such as the output clobber problems and interface crash, we record and restart the test process at the current point. At the end of the entire test, we analyze the causes of antecedent anomalies and the logs of server systems to find the running status of potential vulnerabilities.
@@ -32,7 +41,7 @@ With the trained model, we generate test cases, input the system under test, and
 \begin{figure*}[htbp] 		 %  插入双栏图片
 	\centering
 	\includegraphics[width=5.5in]{FigModelW-distance.pdf}
-	\caption{Dataset(500,000 test cases) W-distance over generator iterations (left) or wall-clock time (right) for SAGANFuzzer}
+	\caption{Dataset(500,000 test cases) W-distance over generator iterations (left) or wall-clock time (right) for HexGANFuzzer}
 	\label{FigModelW-distance}
 \end{figure*} 
 
@@ -47,7 +56,7 @@ Training data in deep learning significantly influence model training. In the ex
 \end{figure}
 
 \quad \textit{\textbf{a. MQTT.}}
-In order to capture the MQTT communication data, an MQTT network environment based ICS is prepared as illustrated in Fig. \ref{FigMQTTEnvironment}. Wireshark \cite{orebaugh2006wireshark} is applied to grab packets during communication. These grabbed frames serve as the training data for the SAGANFuzzer framework. 
+In order to capture the MQTT communication data, an MQTT network environment based ICS is prepared as illustrated in Fig. \ref{FigMQTTEnvironment}. Wireshark \cite{orebaugh2006wireshark} is applied to grab packets during communication. These grabbed frames serve as the training data for the HexGANFuzzer framework. 
 After fetching the connection information between the legal clients and the MQTT broker, we construct a disguised MQTT client to send the same connection information to connect to the broker in the IoT network with no authentication security measures. The disguised MQTT client launches the attack by sending fake MQTT messages which are generated by fuzzy test models. 
 
 \quad \textit{\textbf{b. Modbus-TCP.}}
@@ -56,11 +65,11 @@ Pymodbus \cite{collins2013pymodbus}, a python package that implements the Modbus
 
 \subsubsection{Model Training}
 
-One advantage of our method over weight clipping is largely overcoming the problem of unstable training of GANs, such as non-convergence, vanishing gradient and mode collapse. We design our model architecture based on these architectural constraints and improve training speed and sample quality. To demonstrate this, we train SAGANFuzzer with W-distance and gradient penalty on a dataset with 500,000 test cases and plot W-distance and losses of the generator and the discriminator of training in Figure \ref{FigModelW-distance}.
+One advantage of our method over GANs is largely overcoming the problem of unstable training of GANs, such as non-convergence, vanishing gradient and mode collapse. We design our model architecture based on these architectural constraints and improve training speed and sample quality. To demonstrate this, we train HexGANFuzzer with Wasserstein distance and gradient penalty on a dataset with 500,000 test cases and plot Wasserstein distance and losses of the generator and the discriminator of training in Figure \ref{FigModelW-distance}.
 
+%weight clipping
 
-
-Following the setting in the subsection Model Training Setting, we train one model with the same optimizer (Adam) and learning rate as WGAN with weight clipping. The results also represent that our method converges faster and is more stable at convergence.
+%Following the setting in the subsection Model Training Setting, we train one model with the same optimizer (Adam) and learning rate as WGAN with weight clipping. The results also represent that our method converges faster and is more stable at convergence.
 
 \subsubsection{Logging and Evaluation}
 Logging is the basis for further analysis of model performance and fuzzing effectiveness. By analyzing logs of the communication process is an effective method to find ICPs’ anomalies. Some vulnerabilities may be manifested according to the obvious abnormal behavior of the system, and some behaviors need to be further analyzed. Based on the statistical analysis of the log file, we evaluate experimental results. Furthermore, we artificially analyze specific anomalies to get more details. Test data that causes target anomalies will be recollected and put into the training data set again. Data augmentation and value mutation operation will be applied to these data before putting it into the retraining data set. The retrained model with these mutated data can improve the capability of the model to detect vulnerabilities.
@@ -71,7 +80,7 @@ In this part, we show the experimental results in three aspects. We first presen
 \subsubsection{Statistical Analysis And Results}
 The widely used General Purpose Fuzzer(GPF) \cite{demott2007revolutionizing}, CNN-1D model, LSTM-based seq2seq model, and WGAN-based model are chosen as fuzzers in the control group in this study. After fuzzers in the experimental group and control group are fully trained, fuzz testing is conducted by sending a total of 500,000 generated test cases to MQTT implementations through the TCP/1883 port.
 
-According to the three aforementioned evaluation metrics, the effectiveness and efficiency of our fuzzing framework SAGANFuzzer and fuzzers in the control group are evaluated and represented graphically. Details are as follows.  
+According to the three aforementioned evaluation metrics, the effectiveness and efficiency of our fuzzing framework HexGANFuzzer and fuzzers in the control group are evaluated and represented graphically. Details are as follows.  
 
 \begin{table*}[]
 	\centering
@@ -86,12 +95,12 @@ According to the three aforementioned evaluation metrics, the effectiveness and 
 		& CNN-1D model     & 2014 & 0.6701    & 0.8437 & 0.9743 & 0.8626 \\ \cmidrule(l){2-7} 
 		10,000  & LSTM-based model & 2018 & 0.6300    & 0.8563 & 0.9007 & 0.8254 \\ \cmidrule(l){2-7} 
 		& WGAN-based model & 2019 & 0.7960    & 0.7696 & 0.9115 & 0.8165 \\ \cmidrule(l){2-7} 
-		& SAGANFuzzer      & 2020 & 0.8208    & 0.8274 & 0.9775 & 0.8608 \\ \midrule
+		& HexGANFuzzer      & 2020 & 0.8208    & 0.8274 & 0.9775 & 0.8608 \\ \midrule
 		& GPF              & 2007 & --         & 0.5720 & 0.5730 & 0.6510 \\ \cmidrule(l){2-7} 
 		& CNN-1D model     & 2014 & 0.8373    & 0.8670 & 0.9842 & 0.8690 \\ \cmidrule(l){2-7} 
 		500,000 & LSTM-based model & 2018 & 0.8588    & 0.8203 & 0.9856 & 0.8700 \\ \cmidrule(l){2-7} 
 		& WGAN-based model & 2019 & 0.8396    & 0.8108 & 0.9871 & 0.8906 \\ \cmidrule(l){2-7} 
-		& SAGANFuzzer      & 2020 & 0.8502    & 0.8538 & 0.9878 & 0.9271 \\ \bottomrule
+		& HexGANFuzzer      & 2020 & 0.8502    & 0.8538 & 0.9878 & 0.9271 \\ \bottomrule
 	\end{tabular}
 \end{table*}
 
@@ -101,7 +110,7 @@ Therefore, we can draw a conclusion from the evaluation metrics of the performan
 
 
 \quad \textit{\textbf{b. EVD.}}
-In order to map the EVD values of each model to a relatively small scope for diagrammatic comparison, we normalize all EVD values under the same iteration through Z-score standardization. The experimental results of EVD are shown in Fig. \ref{FIGURE_EVD}. Due to not involving a continuously learning process, the performance of GPF has a downward trend on the targets when compared to the other four fuzzing models based on depth learning. From the perspective of the five models, the performance of the EVD indicators is: GPF $\textless$ CNN-1D model $\approx$ LSTM-based model $\textless$ GAN-based model $\textless$ SAGANFuzzer. 
+In order to map the EVD values of each model to a relatively small scope for diagrammatic comparison, we normalize all EVD values under the same iteration through Z-score standardization. The experimental results of EVD are shown in Fig. \ref{FIGURE_EVD}. Due to not involving a continuously learning process, the performance of GPF has a downward trend on the targets when compared to the other four fuzzing models based on depth learning. From the perspective of the five models, the performance of the EVD indicators is: GPF $\textless$ CNN-1D model $\approx$ LSTM-based model $\textless$ GAN-based model $\textless$ HexGANFuzzer. 
 
 \begin{figure}[htbp]
 	\centering
@@ -110,11 +119,11 @@ In order to map the EVD values of each model to a relatively small scope for dia
 	\label{FIGURE_EVD}
 \end{figure}
 %generative adversarial
-After training more than 30 epochs, the EVD rates of deep learning algorithms obviously exceed the GPF algorithm. With the rising trends of rates slow down significantly after 50 epochs, the average EVD rates of CNN-1D model and LSTM-based model are 60\% to 70\% compared with 75\% to 90\% of generative adversarial algorithms, which may be caused by the inability to learn a hierarchy of representations of the data effectively. Due to the unsupervised characteristic of generative adversarial algorithms, it may result in generating a large number of malformed protocol message sequences, leading to normal throwing which may cause EVD can not be further promoted. But for the generative adversarial algorithms from 50 to 100 epochs, the average EVD rate of SAGANFuzzer is approximately 8\% higher than the WGAN-based model, which indirectly indicates that SAGANFuzzer is more applicable to test cases generation for ICPs. It's worth going into detail that our trained model can effectively detect kinds of anomalies as presented in Table \ref{Triggered_Anomalies_SAGANFuzzer} with the gradient penalty, which shows we are likely to achieve the higher code coverage and the stronger ability of our model has to detect anomalies.
+After training more than 30 epochs, the EVD rates of deep learning algorithms obviously exceed the GPF algorithm. With the rising trends of rates slow down significantly after 50 epochs, the average EVD rates of CNN-1D model and LSTM-based model are 60\% to 70\% compared with 75\% to 90\% of generative adversarial algorithms, which may be caused by the inability to learn a hierarchy of representations of the data effectively. Due to the unsupervised characteristic of generative adversarial algorithms, it may result in generating a large number of malformed protocol message sequences, leading to normal throwing which may cause EVD can not be further promoted. But for the generative adversarial algorithms from 50 to 100 epochs, the average EVD rate of HexGANFuzzer is approximately 8\% higher than the WGAN-based model, which indirectly indicates that HexGANFuzzer is more applicable to test cases generation for ICPs. It's worth going into detail that our trained model can effectively detect kinds of anomalies as presented in Table \ref{Triggered_Anomalies_HexGANFuzzer} with the gradient penalty, which shows we are likely to achieve the higher code coverage and the stronger ability of our model has to detect anomalies.
 %Usually, the richer the data type, the higher code coverage we are likely to achieve, and the stronger ability a model has to detect anomalies.
 \begin{table}[htbp]
-	\caption{Triggered Anomalies and Triggered Frequency of SAGANFuzzer}
-	\label{Triggered_Anomalies_SAGANFuzzer}
+	\caption{Triggered Anomalies and Triggered Frequency of HexGANFuzzer}
+	\label{Triggered_Anomalies_HexGANFuzzer}
 	\centering
 	%
 	\begin{tabular}{m{100pt}<{\centering}  m{40pt}<{\centering} m{50pt}<{\centering} }
@@ -122,11 +131,11 @@ After training more than 30 epochs, the EVD rates of deep learning algorithms ob
 		\bfseries Triggered Anomalies &  \bfseries Frequency (Times) & \bfseries ATITA (Mins)\\
 		\midrule
 		Using abnormal function code & 104 & 5.78\\
-		Automatically closes window & 53 &10.64\\
 		Data length unmatched & 121 & 4.52\\
 		Abnormal address & 23 &13.26\\
 		Integer overflow & 7 & 114.49 \\
 		Broker memory overflow & 2 & 285.05 \\
+		Unknown attack & 53 &10.64\\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -162,13 +171,13 @@ As the fig shows, in $step1$, we send the generated message frames formed by gre
 
 \begin{figure}[h]   %  插入一栏图片
 	\centering 
-	\includegraphics[width=3.5in]{FigSAGANFuzzer_BufferException.pdf}
+	\includegraphics[width=3.5in]{FigHexGANFuzzer_BufferException.pdf}
 	\caption{Potential vulnerabilities analysis}
 	\label{generator}
 \end{figure}
 
 \subsubsection{Applying The Method to Modbus-TCP}
-As shown in Table \ref{table_MQTT}, we detect these potential vulnerabilities, including slave crash, station off-line, working counter attack, using abnormal function code and so on, in Modbus-TCP via the new trained SAGANFuzzer. In the experiment, we send the generated data messages $S_i$ to the slave stations and record the corresponding received message $R_i$. Massive message pairs $<S_i, R_i>$ are obtained. According to the abnormal protocol characterization above, we analyze and compare the specified field values and obtained the following statistical results. Experiments on the Modbus-TCP protocol prove that our method has great versatility.% {350pt}{lcc}
+As shown in Table \ref{table_MQTT}, we detect these potential vulnerabilities, including slave crash, station off-line, working counter attack, using abnormal function code and so on, in Modbus-TCP via the new trained HexGANFuzzer. In the experiment, we send the generated data messages $S_i$ to the slave stations and record the corresponding received message $R_i$. Massive message pairs $<S_i, R_i>$ are obtained. According to the abnormal protocol characterization above, we analyze and compare the specified field values and obtained the following statistical results. Experiments on the Modbus-TCP protocol prove that our method has great versatility.% {350pt}{lcc}
 
 \begin{table}[htbp]
 	\caption{Potential Vulnerabilities and  in Modbus-TCP}

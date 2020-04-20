@@ -1,8 +1,0 @@
-\section{Conclusions and Future works}
-
-Fuzzy test based on deep adversarial learning is of great practical significance to the security verification of ICP. This paper applies deep adversarial learning from a self-attention perspective to generate fake but plausible fuzzing protocol messages of ICPs. We add transformer blocks to the generator, computing hidden representations in parallel for all input and output positions. On the one hand, on account of directly calculating the relationship between any two pixels in the text to obtain the global geometric features of the text in one step, self-attention makes the extracted features more accurate. On the other hand, the number of layers is strictly limited in the case of ensuring the accuracy to reduce the size of the model. We verify the performance of the proposed method on datasets of different data sizes: the accuracy of the datasets containing 10,000 and 500,000 training data are 86.08\% and 92.71\% respectively, and F-measure are 82.08\% and 85.02\% respectively.
-
-
-Considering the current situation, we intend to perform the study in the following aspects in future studies. First, GAN Compression \cite{li2020gan} is a good way to keep the model more lightweight. And it is a promising application scenario that the lightweight model with online learning capabilities is deployed in embedded devices, which can learn protocol specifications or message formats of different protocols automatically. Second, a series of anti-random strategies after model training to improve the probability of anomalies triggering. Finally, we plan to apply the improved SAGAN for more complex unsupervised learning NLP tasks including stateful protocols and non-stateful protocols. 
-
-

@@ -16,6 +16,8 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{lasi2014industry}
+\citation{arjovsky2017wasserstein}
 \citation{arjovsky2017wasserstein}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}}
 \citation{duran1984evaluation}
@@ -27,9 +29,7 @@
 \citation{kifetew2017generating}
 \citation{aitel2002introduction}
 \citation{amini2010sulley}
-\citation{gorbunov2010autofuzz}
 \citation{eddington2011peach}
-\citation{tsankov2012secfuzz}
 \citation{chen2018iotfuzzer}
 \citation{banks2006snooze}
 \citation{devarajan2007unraveling}
@@ -49,21 +49,22 @@
 \citation{vaswani2017attention}
 \citation{gulrajani2017improved}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Related Works}{2}{section.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}SAGANFuzzer Framework}{2}{section.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}HexGANFuzzer Framework}{2}{section.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Preprocessing of ICP Message Frames}{2}{subsection.3.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}1}\textbf  {Message Frame Clustering}}{2}{subsubsection.3.1.1}}
 \citation{vaswani2017attention}
+\citation{vaswani2017attention}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-A}2}\textbf  {Data Conversion}}{3}{subsubsection.3.1.2}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The architecture of SAGANFuzzer}}{3}{figure.1}}
-\newlabel{FigSAGANFuzzer_model}{{1}{3}{The architecture of SAGANFuzzer}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The architecture of HexGANFuzzer}}{3}{figure.1}}
+\newlabel{FigHexGANFuzzer_model}{{1}{3}{The architecture of HexGANFuzzer}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Model Design}{3}{subsection.3.2}}
 \newlabel{sec:model_design}{{\unhbox \voidb@x \hbox {III-B}}{3}{Model Design}{subsection.3.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}1}\textbf  {Generator}}{3}{subsubsection.3.2.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Generator Network}}{3}{figure.2}}
-\newlabel{FigSAGANFuzzer_Generator}{{2}{3}{Generator Network}{figure.2}{}}
+\newlabel{FigHexGANFuzzer_Generator}{{2}{3}{Generator Network}{figure.2}{}}
 \citation{arjovsky2017wasserstein}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Generator Network}}{4}{figure.3}}
-\newlabel{FigSAGANFuzzer_Critic}{{3}{4}{Generator Network}{figure.3}{}}
+\newlabel{FigHexGANFuzzer_Critic}{{3}{4}{Generator Network}{figure.3}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}2}\textbf  {Critic}}{4}{subsubsection.3.2.2}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {III-B}3}\textbf  {Training strategy}}{4}{subsubsection.3.2.3}}
 \citation{heusel2017gans}
@@ -92,8 +93,8 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}2}Model Training Setting}{6}{subsubsection.4.2.2}}
 \citation{orebaugh2006wireshark}
 \citation{collins2013pymodbus}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Dataset(500,000 test cases) W-distance over generator iterations (left) or wall-clock time (right) for SAGANFuzzer}}{7}{figure.5}}
-\newlabel{FigModelW-distance}{{5}{7}{Dataset(500,000 test cases) W-distance over generator iterations (left) or wall-clock time (right) for SAGANFuzzer}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Dataset(500,000 test cases) W-distance over generator iterations (left) or wall-clock time (right) for HexGANFuzzer}}{7}{figure.5}}
+\newlabel{FigModelW-distance}{{5}{7}{Dataset(500,000 test cases) W-distance over generator iterations (left) or wall-clock time (right) for HexGANFuzzer}{figure.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}}Fuzz Testing The Target ICP}{7}{subsection.4.3}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-C}1}Training Data}{7}{subsubsection.4.3.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces MQTT enviroment}}{7}{figure.6}}
@@ -107,60 +108,63 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}1}Statistical Analysis And Results}{8}{subsubsection.4.4.1}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces EVD changes with the training epochs}}{9}{figure.7}}
 \newlabel{FIGURE_EVD}{{7}{9}{EVD changes with the training epochs}{figure.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Triggered Anomalies and Triggered Frequency of SAGANFuzzer}}{9}{table.2}}
-\newlabel{Triggered_Anomalies_SAGANFuzzer}{{II}{9}{Triggered Anomalies and Triggered Frequency of SAGANFuzzer}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Triggered Anomalies and Triggered Frequency of HexGANFuzzer}}{9}{table.2}}
+\newlabel{Triggered_Anomalies_HexGANFuzzer}{{II}{9}{Triggered Anomalies and Triggered Frequency of HexGANFuzzer}{table.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces EFVD changes with the training epochs}}{9}{figure.8}}
 \newlabel{FIGURE_EFVD}{{8}{9}{EFVD changes with the training epochs}{figure.8}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}2}Applying The Method to Modbus-TCP}{9}{subsubsection.4.4.2}}
-\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Potential Vulnerabilities and in Modbus-TCP}}{9}{table.3}}
-\newlabel{table_MQTT}{{III}{9}{Potential Vulnerabilities and in Modbus-TCP}{table.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}2}Potential Vulnerabilities Found}{9}{subsubsection.4.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {IV-D}3}Applying The Method to Modbus-TCP}{9}{subsubsection.4.4.3}}
 \citation{li2020gan}
 \citation{*}
 \bibstyle{IEEEtran}
 \bibdata{Reference}
-\bibcite{arjovsky2017wasserstein}{{1}{}{{}}{{}}}
-\bibcite{duran1984evaluation}{{2}{}{{}}{{}}}
-\bibcite{miller1990empirical}{{3}{}{{}}{{}}}
-\bibcite{sparks2007automated}{{4}{}{{}}{{}}}
-\bibcite{kinder2009abstract}{{5}{}{{}}{{}}}
-\bibcite{hoschele2016mining}{{6}{}{{}}{{}}}
-\bibcite{bastani2017synthesizing}{{7}{}{{}}{{}}}
-\bibcite{kifetew2017generating}{{8}{}{{}}{{}}}
-\bibcite{aitel2002introduction}{{9}{}{{}}{{}}}
-\bibcite{amini2010sulley}{{10}{}{{}}{{}}}
-\bibcite{gorbunov2010autofuzz}{{11}{}{{}}{{}}}
+\bibcite{lasi2014industry}{{1}{}{{}}{{}}}
+\bibcite{arjovsky2017wasserstein}{{2}{}{{}}{{}}}
+\bibcite{duran1984evaluation}{{3}{}{{}}{{}}}
+\bibcite{miller1990empirical}{{4}{}{{}}{{}}}
+\bibcite{sparks2007automated}{{5}{}{{}}{{}}}
+\bibcite{kinder2009abstract}{{6}{}{{}}{{}}}
+\bibcite{hoschele2016mining}{{7}{}{{}}{{}}}
+\bibcite{bastani2017synthesizing}{{8}{}{{}}{{}}}
+\bibcite{kifetew2017generating}{{9}{}{{}}{{}}}
+\bibcite{aitel2002introduction}{{10}{}{{}}{{}}}
+\bibcite{amini2010sulley}{{11}{}{{}}{{}}}
 \bibcite{eddington2011peach}{{12}{}{{}}{{}}}
-\bibcite{tsankov2012secfuzz}{{13}{}{{}}{{}}}
-\bibcite{chen2018iotfuzzer}{{14}{}{{}}{{}}}
-\bibcite{banks2006snooze}{{15}{}{{}}{{}}}
-\bibcite{devarajan2007unraveling}{{16}{}{{}}{{}}}
-\bibcite{voyiatzis2015modbus}{{17}{}{{}}{{}}}
-\bibcite{pereyda2017boofuzz}{{18}{}{{}}{{}}}
-\bibcite{li2018fuzzing}{{19}{}{{}}{{}}}
-\bibcite{grieco2016toward}{{20}{}{{}}{{}}}
-\bibcite{wu2017vulnerability}{{21}{}{{}}{{}}}
-\bibcite{chernis2018machine}{{22}{}{{}}{{}}}
-\bibcite{godefroid2017learn}{{23}{}{{}}{{}}}
-\bibcite{rajpal2017not}{{24}{}{{}}{{}}}
+\bibcite{chen2018iotfuzzer}{{13}{}{{}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Potential vulnerabilities analysis}}{10}{figure.9}}
+\newlabel{generator}{{9}{10}{Potential vulnerabilities analysis}{figure.9}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Potential Vulnerabilities and in Modbus-TCP}}{10}{table.3}}
+\newlabel{table_MQTT}{{III}{10}{Potential Vulnerabilities and in Modbus-TCP}{table.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Conclusions and Future works}{10}{section.5}}
-\bibcite{wang2017skyfire}{{25}{}{{}}{{}}}
-\bibcite{she2019neuzz}{{26}{}{{}}{{}}}
-\bibcite{liu2019reinforcement}{{27}{}{{}}{{}}}
-\bibcite{hu2018ganfuzz}{{28}{}{{}}{{}}}
-\bibcite{li2019intelligent}{{29}{}{{}}{{}}}
-\bibcite{vaswani2017attention}{{30}{}{{}}{{}}}
-\bibcite{gulrajani2017improved}{{31}{}{{}}{{}}}
-\bibcite{heusel2017gans}{{32}{}{{}}{{}}}
-\bibcite{karras2017progressive}{{33}{}{{}}{{}}}
-\bibcite{lucic2018gans}{{34}{}{{}}{{}}}
-\bibcite{shmelkov2018good}{{35}{}{{}}{{}}}
-\bibcite{hemmati2013achieving}{{36}{}{{}}{{}}}
-\bibcite{mondal2015exploring}{{37}{}{{}}{{}}}
-\bibcite{light2017mosquitto}{{38}{}{{}}{{}}}
-\bibcite{swales1999open}{{39}{}{{}}{{}}}
-\bibcite{orebaugh2006wireshark}{{40}{}{{}}{{}}}
-\bibcite{collins2013pymodbus}{{41}{}{{}}{{}}}
-\bibcite{demott2007revolutionizing}{{42}{}{{}}{{}}}
-\bibcite{li2020gan}{{43}{}{{}}{{}}}
+\bibcite{banks2006snooze}{{14}{}{{}}{{}}}
+\bibcite{devarajan2007unraveling}{{15}{}{{}}{{}}}
+\bibcite{voyiatzis2015modbus}{{16}{}{{}}{{}}}
+\bibcite{pereyda2017boofuzz}{{17}{}{{}}{{}}}
+\bibcite{li2018fuzzing}{{18}{}{{}}{{}}}
+\bibcite{grieco2016toward}{{19}{}{{}}{{}}}
+\bibcite{wu2017vulnerability}{{20}{}{{}}{{}}}
+\bibcite{chernis2018machine}{{21}{}{{}}{{}}}
+\bibcite{godefroid2017learn}{{22}{}{{}}{{}}}
+\bibcite{rajpal2017not}{{23}{}{{}}{{}}}
+\bibcite{wang2017skyfire}{{24}{}{{}}{{}}}
+\bibcite{she2019neuzz}{{25}{}{{}}{{}}}
+\bibcite{liu2019reinforcement}{{26}{}{{}}{{}}}
+\bibcite{hu2018ganfuzz}{{27}{}{{}}{{}}}
+\bibcite{li2019intelligent}{{28}{}{{}}{{}}}
+\bibcite{vaswani2017attention}{{29}{}{{}}{{}}}
+\bibcite{gulrajani2017improved}{{30}{}{{}}{{}}}
+\bibcite{heusel2017gans}{{31}{}{{}}{{}}}
+\bibcite{karras2017progressive}{{32}{}{{}}{{}}}
+\bibcite{lucic2018gans}{{33}{}{{}}{{}}}
+\bibcite{shmelkov2018good}{{34}{}{{}}{{}}}
+\bibcite{hemmati2013achieving}{{35}{}{{}}{{}}}
+\bibcite{mondal2015exploring}{{36}{}{{}}{{}}}
+\bibcite{light2017mosquitto}{{37}{}{{}}{{}}}
+\bibcite{swales1999open}{{38}{}{{}}{{}}}
+\bibcite{orebaugh2006wireshark}{{39}{}{{}}{{}}}
+\bibcite{collins2013pymodbus}{{40}{}{{}}{{}}}
+\bibcite{demott2007revolutionizing}{{41}{}{{}}{{}}}
+\bibcite{li2020gan}{{42}{}{{}}{{}}}
+\bibcite{tsankov2012secfuzz}{{43}{}{{}}{{}}}
 \bibcite{paho2018mqtt}{{44}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers

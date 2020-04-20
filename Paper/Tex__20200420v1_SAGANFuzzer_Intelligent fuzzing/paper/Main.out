@@ -1,6 +1,6 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Related Works}{}% 2
-\BOOKMARK [1][-]{section.3}{SAGANFuzzer Framework}{}% 3
+\BOOKMARK [1][-]{section.3}{HexGANFuzzer Framework}{}% 3
 \BOOKMARK [2][-]{subsection.3.1}{Preprocessing of ICP Message Frames}{section.3}% 4
 \BOOKMARK [3][-]{subsubsection.3.1.1}{Message Frame Clustering}{subsection.3.1}% 5
 \BOOKMARK [3][-]{subsubsection.3.1.2}{Data Conversion}{subsection.3.1}% 6
@@ -25,5 +25,6 @@
 \BOOKMARK [3][-]{subsubsection.4.3.3}{Logging and Evaluation}{subsection.4.3}% 25
 \BOOKMARK [2][-]{subsection.4.4}{Result Analysis}{section.4}% 26
 \BOOKMARK [3][-]{subsubsection.4.4.1}{Statistical Analysis And Results}{subsection.4.4}% 27
-\BOOKMARK [3][-]{subsubsection.4.4.2}{Applying The Method to Modbus-TCP}{subsection.4.4}% 28
-\BOOKMARK [1][-]{section.5}{Conclusions and Future works}{}% 29
+\BOOKMARK [3][-]{subsubsection.4.4.2}{Potential Vulnerabilities Found}{subsection.4.4}% 28
+\BOOKMARK [3][-]{subsubsection.4.4.3}{Applying The Method to Modbus-TCP}{subsection.4.4}% 29
+\BOOKMARK [1][-]{section.5}{Conclusions and Future works}{}% 30
