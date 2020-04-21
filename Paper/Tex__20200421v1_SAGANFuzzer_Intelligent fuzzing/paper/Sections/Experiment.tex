@@ -75,10 +75,10 @@ One advantage of our method over GANs is largely overcoming the problem of unsta
 Logging is the basis for further analysis of model performance and fuzzing effectiveness. By analyzing logs of the communication process is an effective method to find ICPs’ anomalies. Some vulnerabilities may be manifested according to the obvious abnormal behavior of the system, and some behaviors need to be further analyzed. Based on the statistical analysis of the log file, we evaluate experimental results. Furthermore, we artificially analyze specific anomalies to get more details. Test data that causes target anomalies will be recollected and put into the training data set again. Data augmentation and value mutation operation will be applied to these data before putting it into the retraining data set. The retrained model with these mutated data can improve the capability of the model to detect vulnerabilities.
 
 \subsection{Result Analysis}
-In this part, we show the experimental results in three aspects. We first present some special anomalies that occurred in fuzzing the MQTT implementations. Then we reveal statistical results and their analysis. Lastly, to show the methodology’s protocol independence in ICP’s fuzz testing, the result of testing Modbus-TCP is presented.
+In this part, we show the experimental results in three aspects. We first reveal statistical results and their analysis. Then we present some special anomalies that occurred in fuzzing the MQTT implementations. Lastly, to show the methodology’s protocol independence in ICP’s fuzz testing, the result of testing Modbus-TCP is presented.
 
 \subsubsection{Statistical Analysis And Results}
-The widely used General Purpose Fuzzer(GPF) \cite{demott2007revolutionizing}, CNN-1D model, LSTM-based seq2seq model, and WGAN-based model are chosen as fuzzers in the control group in this study. After fuzzers in the experimental group and control group are fully trained, fuzz testing is conducted by sending a total of 500,000 generated test cases to MQTT implementations through the TCP/1883 port.
+The widely used General Purpose Fuzzer(GPF) \cite{demott2007revolutionizing}, CNN-1D model, LSTM-based seq2seq model, and WGAN-based model are chosen as fuzzers in the control group in this study. After fuzzers in the experimental group and control group are fully trained, fuzz testing is conducted by sending a total of 100,000 generated test cases to MQTT implementations through the TCP/1883 port.
 
 According to the three aforementioned evaluation metrics, the effectiveness and efficiency of our fuzzing framework HexGANFuzzer and fuzzers in the control group are evaluated and represented graphically. Details are as follows.  
 
@@ -92,15 +92,15 @@ According to the three aforementioned evaluation metrics, the effectiveness and 
 		\textbf{Dataset
 			(number of training cases)} & \textbf{Methods}          & \textbf{Year} & \textbf{F-measure} & \textbf{SE}     & \textbf{SP}     & \textbf{AC}     \\ \midrule
 		& GPF              & 2007 & --         & 0.5252 & 0.5798 & 0.6474 \\ \cmidrule(l){2-7} 
-		& CNN-1D model     & 2014 & 0.6701    & 0.8437 & 0.9743 & 0.8626 \\ \cmidrule(l){2-7} 
-		10,000  & LSTM-based model & 2018 & 0.6300    & 0.8563 & 0.9007 & 0.8254 \\ \cmidrule(l){2-7} 
+		& CNN-1D model     & 2014 & 0.6701    & 0.8437 & 0.9743 & \textbf{0.8626} \\ \cmidrule(l){2-7} 
+		10,000  & LSTM-based model & 2018 & 0.6300    & \textbf{0.8563}   & 0.9007 & 0.8254 \\ \cmidrule(l){2-7} 
 		& WGAN-based model & 2019 & 0.7960    & 0.7696 & 0.9115 & 0.8165 \\ \cmidrule(l){2-7} 
-		& HexGANFuzzer      & 2020 & 0.8208    & 0.8274 & 0.9775 & 0.8608 \\ \midrule
+		& HexGANFuzzer      & 2020 & \textbf{0.8208}    & 0.8274 & \textbf{0.9775} & 0.8608 \\ \midrule
 		& GPF              & 2007 & --         & 0.5720 & 0.5730 & 0.6510 \\ \cmidrule(l){2-7} 
-		& CNN-1D model     & 2014 & 0.8373    & 0.8670 & 0.9842 & 0.8690 \\ \cmidrule(l){2-7} 
-		500,000 & LSTM-based model & 2018 & 0.8588    & 0.8203 & 0.9856 & 0.8700 \\ \cmidrule(l){2-7} 
-		& WGAN-based model & 2019 & 0.8396    & 0.8108 & 0.9871 & 0.8906 \\ \cmidrule(l){2-7} 
-		& HexGANFuzzer      & 2020 & 0.8502    & 0.8538 & 0.9878 & 0.9271 \\ \bottomrule
+		& CNN-1D model     & 2014 & 0.8373    & \textbf{0.8670} & 0.9842 & 0.8690 \\ \cmidrule(l){2-7} 
+		500,000 & LSTM-based model & 2018 & 0.8388    & 0.8203 & \textbf{0.9856} & 0.8700 \\ \cmidrule(l){2-7} 
+		& WGAN-based model & 2019 & 0.8396    & 0.8108 & 0.9371 & 0.8906 \\ \cmidrule(l){2-7} 
+		& HexGANFuzzer      & 2020 & \textbf{0.8502}    & 0.8538 & 0.9478 & \textbf{0.9271} \\ \bottomrule
 	\end{tabular}
 \end{table*}
 
@@ -112,7 +112,7 @@ Therefore, we can draw a conclusion from the evaluation metrics of the performan
 \quad \textit{\textbf{b. EVD.}}
 In order to map the EVD values of each model to a relatively small scope for diagrammatic comparison, we normalize all EVD values under the same iteration through Z-score standardization. The experimental results of EVD are shown in Fig. \ref{FIGURE_EVD}. Due to not involving a continuously learning process, the performance of GPF has a downward trend on the targets when compared to the other four fuzzing models based on depth learning. From the perspective of the five models, the performance of the EVD indicators is: GPF $\textless$ CNN-1D model $\approx$ LSTM-based model $\textless$ GAN-based model $\textless$ HexGANFuzzer. 
 
-\begin{figure}[htbp]
+\begin{figure}[t]
 	\centering
 	\includegraphics[width=3.36in]{FIGURE_EVD.jpg}
 	\caption{EVD changes with the training epochs}
@@ -155,7 +155,7 @@ There is a huge difference in the training time of different GPF and the time of
 
 %BLSTM-DCNNFuzz and LSTM-based model have a good performance on maintaining basically the test case diversity, which illustrates the two models can learn the time-step dimension of protocol messages. And owing to the BLSTM model containing two sub-networks for the forward and backward sequence context respectively, it is able for the BLSTM-DCNNFuzz to exploit information from both the past and the future, which performs better than LSTM-based model. 
 
-\begin{figure}[htbp]
+\begin{figure}[t]
 	\centering
 	\includegraphics[width=3.3in]{FIGURE_EFVD.jpg}
 	\caption{EFVD changes with the training epochs}

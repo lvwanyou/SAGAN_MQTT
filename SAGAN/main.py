@@ -19,7 +19,7 @@ def parse_args():
     parser.add_argument('--LAMBDA', type=int, default=10)
     parser.add_argument('--seq_size', type=int, default=24)
     parser.add_argument('--batch_size', type=int, default=32)
-    parser.add_argument('--epoch', type=int, default=3)
+    parser.add_argument('--epoch', type=int, default=2)
     parser.add_argument('--iteration', type=int, default=10000)
     parser.add_argument('--sample_num', type=int, default=10)
     parser.add_argument('--d_model', type=int, default=20)

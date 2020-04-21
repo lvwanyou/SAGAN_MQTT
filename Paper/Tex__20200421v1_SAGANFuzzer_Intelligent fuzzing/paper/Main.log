@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.14)  20 APR 2020 21:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.14)  21 APR 2020 18:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1374,8 +1374,11 @@ Overfull \hbox (0.94499pt too wide) in paragraph at lines 174--175
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9 <./FIGURE_EVD.jpg> <./FIGURE_EFVD.jpg>]) (./Sections/Conclusions.tex)
-(./Main.bbl
+
+Underfull \vbox (badness 4132) has occurred while \output is active []
+
+ [9 <./FIGURE_EVD.jpg> <./FIGURE_EFVD.jpg>]) (./Sections/Conclusions.tex) (./Ma
+in.bbl
 Underfull \hbox (badness 1728) in paragraph at lines 49--54
 []\OT1/ptm/m/n/10 J. Kinder, F. Zuleger, and H. Veith, ``An ab-stract
  []
@@ -1439,7 +1442,7 @@ pfb><d:/Texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><d:/Texlive/20
 18/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><d:/Texlive/2018/texmf-dist/fon
 ts/type1/urw/times/utmr8a.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on Main.pdf (11 pages, 1407500 bytes).
+Output written on Main.pdf (11 pages, 1407132 bytes).
 PDF statistics:
  508 PDF objects out of 1000 (max. 8388607)
  449 compressed objects within 5 object streams
