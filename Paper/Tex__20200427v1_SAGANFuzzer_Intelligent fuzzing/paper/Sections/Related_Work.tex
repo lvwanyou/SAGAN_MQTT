@@ -1,0 +1,24 @@
+%@article{gorbunov2010autofuzz,
+%	title={Autofuzz: Automated network protocol fuzzing framework},
+%	author={Gorbunov, Serge and Rosenbloom, Arnold},
+%	journal={IJCSNS},
+%	volume={10},
+%	number={8},
+%	pages={239},
+%	year={2010}
+%}
+\section{Related Works}
+The prototype of fuzzing is Random Testing. Duran and Ntafos are pioneers in this field \cite{duran1984evaluation}. In the early research, arbitrary input was used to test computer programs and good results were achieved. The concept of fuzzing was formally proposed by Miller et al. \cite{miller1990empirical} in 1990 and was initially applied to the testing of Unix programs. Fuzzing is a stress test by inputting a large number of unexpected abnormal inputs into the test target so as to trigger abnormal behavior of the target system, analyze the system according to abnormal behavior, and find the exploitable vulnerabilities in the system.
+
+Since then, a variety of different techniques have been proposed to improve the efficiency of fuzzing. These techniques include static analysis \cite{sparks2007automated} \cite{kinder2009abstract}, dynamic analysis \cite{hoschele2016mining} \cite{bastani2017synthesizing} \cite{kifetew2017generating}. Because of its effectiveness, fuzzing has been studied in the network protocol testing field to enhance the reliability of the computer network \cite{aitel2002introduction} \cite{amini2010sulley} %\cite{gorbunov2010autofuzz} 
+\cite{eddington2011peach}. cite{tsankov2012secfuzz} \cite{chen2018iotfuzzer} 
+And some of these works are for ICPs and have made a certain contribution to the improvement of the safety and security of ICPs. Greg Banks et al. proposed a fuzzy test tool called SNOOZE \cite{banks2006snooze} for stateful network protocols. Devarajan et al. \cite{devarajan2007unraveling} released a fuzzy test module based on the Sully tool for Modbus, DNP3 and other industrial control protocols. Voyiatzis et al. \cite{voyiatzis2015modbus} designed a Modbus-TCP fuzzy test tool called MTF which builds the test model by Modbus official instructions. Boofuzz \cite{pereyda2017boofuzz}, proposed by Pereyda et al., aims not only for numerous bug fixes but also for extensibility in the field of network protocol fuzzing.
+
+However, fuzzing still faces many challenges, such as how to mutate seed inputs, how to increase code coverage, and how to effectively bypass verification \cite{li2018fuzzing}.
+With the advancement of machine learning in the field of cybersecurity, it has also been adopted by many studies for vulnerability detection\cite{grieco2016toward} \cite{wu2017vulnerability} \cite{chernis2018machine}, including the applications in fuzzing \cite{godefroid2017learn} \cite{rajpal2017not} \cite{wang2017skyfire} \cite{she2019neuzz} \cite{liu2019reinforcement}. ICPs have many features in common such as short-data frames and no encryption. They are designed to satisfy the real-time requirements of ICSs. As expected, some studies have incorporated fuzzing algorithms of ICPs based on deep learning into the fuzzing process of ICPs \cite{hu2018ganfuzz} \cite{li2019intelligent}. Machine learning technology is introduced into fuzzing to provide a new idea for solving the bottleneck problems of the traditional fuzzing technology and also makes the fuzzing technology intelligent.  With the explosive growth of machine learning research, using machine learning for fuzzing will become one of the critical points in the development of vulnerability detection technology. These efforts all contribute to fuzzing based on deep learning.
+
+There are still some limitations of these aforementioned fuzzing algorithms based on deep learning, such as unbalanced training samples, lack of feature classification ability of industrial communication behavior, and difficult to extract the characteristics related to vulnerabilities. 
+
+Self-attention \cite{vaswani2017attention}, an attention mechanism relating to different positions of a single sequence, allows attention-driven, long-range dependency modeling for generation tasks. GAN, with a discriminative network D (discriminator) which learns to distinguish the reality of a
+given data instance, and a generative network G (generator) which learns to confuse discriminator, can generate fake but plausible data via an adversarial learning process. Inspired by these, we integrate the characteristics of self-attention and GAN to propose a deep convolution generative adversarial networks based fuzzing methodology and design an automated and intelligent fuzzing framework based on it, named HexGANFuzzer. And with using Wasserstein distance and a gradient penalty (WGAN-GP) \cite{gulrajani2017improved}, our framework can not only solve the problem of poor performance for discrete data but also ensure the diversity of generated test cases.
+
