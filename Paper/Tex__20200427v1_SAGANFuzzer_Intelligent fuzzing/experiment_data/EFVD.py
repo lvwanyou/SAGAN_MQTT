@@ -71,7 +71,6 @@ plt.grid(True,linestyle='-.')
 
 def to_percent(temp, position):
     return '%2.1f' % (100 * temp) + '%'
-savefig("C:\\Users\\11442\\Desktop\\EFVD.jpg")
 plt.gca().yaxis.set_major_formatter(FuncFormatter(to_percent))
-plt.savefig("TCRR.pdf", bbox_inches='tight',pad_inches=0.01)
+plt.savefig("C:\\Users\\11442\\Desktop\\EFVD.pdf", bbox_inches='tight',pad_inches=0.01)
 plt.show()

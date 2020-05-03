@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.14)  27 APR 2020 13:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.14)  28 APR 2020 15:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1297,19 +1297,16 @@ Overfull \hbox (0.94499pt too wide) in paragraph at lines 13--14
  []
 
 [6 <./FigMQTTFormat.pdf>]
-<FigModelW-distance.pdf, id=341, 903.375pt x 347.49826pt>
+<FigModelW-distance.pdf, id=341, 875.06924pt x 302.93173pt>
 File: FigModelW-distance.pdf Graphic file (type pdf)
 <use FigModelW-distance.pdf>
 Package pdftex.def Info: FigModelW-distance.pdf  used on input line 43.
-(pdftex.def)             Requested size: 397.48499pt x 152.89969pt.
+(pdftex.def)             Requested size: 433.62pt x 150.11113pt.
 <FigMQTTEnvironment.pdf, id=342, 260.17201pt x 183.68625pt>
 File: FigMQTTEnvironment.pdf Graphic file (type pdf)
 <use FigMQTTEnvironment.pdf>
 Package pdftex.def Info: FigMQTTEnvironment.pdf  used on input line 53.
 (pdftex.def)             Requested size: 216.81pt x 153.07895pt.
-
-Underfull \vbox (badness 1648) has occurred while \output is active []
-
  [7 <./FigModelW-distance.pdf> <./FigMQTTEnvironment.pdf
 
 pdfTeX warning: pdflatex.exe (file ./FigMQTTEnvironment.pdf): PDF inclusion: mu
@@ -1345,17 +1342,17 @@ LaTeX Warning: Command \textless invalid in math mode on input line 113.
 
 LaTeX Warning: Command \textless invalid in math mode on input line 113.
 
-<FIGURE_EVD.jpg, id=375, 462.528pt x 346.896pt>
-File: FIGURE_EVD.jpg Graphic file (type jpg)
-<use FIGURE_EVD.jpg>
-Package pdftex.def Info: FIGURE_EVD.jpg  used on input line 117.
-(pdftex.def)             Requested size: 242.82724pt x 182.12312pt.
+<FIGURE_EVD.pdf, id=375, 433.3195pt x 295.92732pt>
+File: FIGURE_EVD.pdf Graphic file (type pdf)
+<use FIGURE_EVD.pdf>
+Package pdftex.def Info: FIGURE_EVD.pdf  used on input line 117.
+(pdftex.def)             Requested size: 242.82724pt x 165.83556pt.
 [8]
-<FIGURE_EFVD.jpg, id=386, 462.528pt x 346.896pt>
-File: FIGURE_EFVD.jpg Graphic file (type jpg)
-<use FIGURE_EFVD.jpg>
-Package pdftex.def Info: FIGURE_EFVD.jpg  used on input line 159.
-(pdftex.def)             Requested size: 238.49121pt x 178.8678pt.
+<FIGURE_EFVD.pdf, id=386, 433.3195pt x 295.92732pt>
+File: FIGURE_EFVD.pdf Graphic file (type pdf)
+<use FIGURE_EFVD.pdf>
+Package pdftex.def Info: FIGURE_EFVD.pdf  used on input line 159.
+(pdftex.def)             Requested size: 238.49121pt x 162.87341pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./FigHexGANFuzzer_BufferException.pdf): PDF 
@@ -1374,8 +1371,11 @@ Overfull \hbox (0.94499pt too wide) in paragraph at lines 173--174
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[9 <./FIGURE_EVD.jpg> <./FIGURE_EFVD.jpg>]) (./Sections/Conclusions.tex)
-(./Main.bbl
+[9 <./FIGURE_EVD.pdf> <./FIGURE_EFVD.pdf
+
+pdfTeX warning: pdflatex.exe (file ./FIGURE_EFVD.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
+>]) (./Sections/Conclusions.tex) (./Main.bbl
 Underfull \hbox (badness 1728) in paragraph at lines 49--54
 []\OT1/ptm/m/n/10 J. Kinder, F. Zuleger, and H. Veith, ``An ab-stract
  []
@@ -1414,8 +1414,8 @@ Package rerunfilecheck Info: File `Main.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 60.
  ) 
 Here is how much of TeX's memory you used:
- 30391 strings out of 492649
- 717391 string characters out of 6133384
+ 30390 strings out of 492649
+ 717435 string characters out of 6133384
  904836 words of memory out of 5000000
  33536 multiletter control sequences out of 15000+600000
  54697 words of font info for 135 fonts, out of 8000000 for 9000
@@ -1439,10 +1439,10 @@ pfb><d:/Texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><d:/Texlive/20
 18/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><d:/Texlive/2018/texmf-dist/fon
 ts/type1/urw/times/utmr8a.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on Main.pdf (11 pages, 1407090 bytes).
+Output written on Main.pdf (11 pages, 1253716 bytes).
 PDF statistics:
- 509 PDF objects out of 1000 (max. 8388607)
- 450 compressed objects within 5 object streams
+ 622 PDF objects out of 1000 (max. 8388607)
+ 461 compressed objects within 5 object streams
  115 named destinations out of 1000 (max. 500000)
  298 words of extra memory for PDF output out of 10000 (max. 10000000)
 
