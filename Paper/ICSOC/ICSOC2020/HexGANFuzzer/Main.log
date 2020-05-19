@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.14)  1 MAY 2020 22:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.14)  19 MAY 2020 17:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -374,33 +374,219 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 59.
 
-(./Sections/Acknowledgments.tex) [1
+(./Sections/Introduction.tex [1
 
-{d:/Texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./Main.aux) ) 
+{d:/Texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./Sections/Re
+lated_Work.tex [2])
+(./Sections/Fuzzer_Framework.tex
+Package epstopdf Info: Source file: <Figure/FigHexGANFuzzer_model.eps>
+(epstopdf)                    date: 2020-05-01 11:35:36
+(epstopdf)                    size: 902232 bytes
+(epstopdf)             Output file: <Figure/FigHexGANFuzzer_model-eps-converted
+-to.pdf>
+(epstopdf)                    date: 2020-05-01 11:37:07
+(epstopdf)                    size: 75275 bytes
+(epstopdf)             Command: <repstopdf --outfile=Figure/FigHexGANFuzzer_mod
+el-eps-converted-to.pdf Figure/FigHexGANFuzzer_model.eps>
+(epstopdf)             \includegraphics on input line 9.
+Package epstopdf Info: Output file is already uptodate.
+<Figure/FigHexGANFuzzer_model-eps-converted-to.pdf, id=20, 1053.9375pt x 316.18
+124pt>
+File: Figure/FigHexGANFuzzer_model-eps-converted-to.pdf Graphic file (type pdf)
+
+<use Figure/FigHexGANFuzzer_model-eps-converted-to.pdf>
+Package pdftex.def Info: Figure/FigHexGANFuzzer_model-eps-converted-to.pdf  use
+d on input line 9.
+(pdftex.def)             Requested size: 347.12354pt x 104.1375pt.
+ [3]
+Package epstopdf Info: Source file: <Figure/FigHexGANFuzzer_Generator.eps>
+(epstopdf)                    date: 2020-04-29 15:33:51
+(epstopdf)                    size: 617217 bytes
+(epstopdf)             Output file: <Figure/FigHexGANFuzzer_Generator-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2020-04-29 15:34:36
+(epstopdf)                    size: 28935 bytes
+(epstopdf)             Command: <repstopdf --outfile=Figure/FigHexGANFuzzer_Gen
+erator-eps-converted-to.pdf Figure/FigHexGANFuzzer_Generator.eps>
+(epstopdf)             \includegraphics on input line 44.
+Package epstopdf Info: Output file is already uptodate.
+<Figure/FigHexGANFuzzer_Generator-eps-converted-to.pdf, id=25, 740.7675pt x 370
+.38374pt>
+File: Figure/FigHexGANFuzzer_Generator-eps-converted-to.pdf Graphic file (type 
+pdf)
+<use Figure/FigHexGANFuzzer_Generator-eps-converted-to.pdf>
+Package pdftex.def Info: Figure/FigHexGANFuzzer_Generator-eps-converted-to.pdf 
+ used on input line 44.
+(pdftex.def)             Requested size: 347.12354pt x 173.56042pt.
+ [4 <./Figure/FigHexGANFuzzer_model-eps-converted-to.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5 <./Figure/FigHexGANFuzzer_Generator-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <Figure/FigHexGANFuzzer_Critic.eps>
+(epstopdf)                    date: 2020-05-01 13:56:16
+(epstopdf)                    size: 333819 bytes
+(epstopdf)             Output file: <Figure/FigHexGANFuzzer_Critic-eps-converte
+d-to.pdf>
+(epstopdf)                    date: 2020-05-01 13:57:59
+(epstopdf)                    size: 27449 bytes
+(epstopdf)             Command: <repstopdf --outfile=Figure/FigHexGANFuzzer_Cri
+tic-eps-converted-to.pdf Figure/FigHexGANFuzzer_Critic.eps>
+(epstopdf)             \includegraphics on input line 79.
+Package epstopdf Info: Output file is already uptodate.
+<Figure/FigHexGANFuzzer_Critic-eps-converted-to.pdf, id=66, 1105.12875pt x 218.
+8175pt>
+File: Figure/FigHexGANFuzzer_Critic-eps-converted-to.pdf Graphic file (type pdf
+)
+<use Figure/FigHexGANFuzzer_Critic-eps-converted-to.pdf>
+Package pdftex.def Info: Figure/FigHexGANFuzzer_Critic-eps-converted-to.pdf  us
+ed on input line 79.
+(pdftex.def)             Requested size: 347.12354pt x 68.73088pt.
+ [6 <./Figure/FigHexGANFuzzer_Critic-eps-converted-to.pdf>]) (./Sections/Perfor
+mance_Metrics.tex [7]
+[8]) (./Sections/Experiment.tex [9]
+Package epstopdf Info: Source file: <Figure/FigModelW-distance.eps>
+(epstopdf)                    date: 2020-05-01 14:24:28
+(epstopdf)                    size: 1094225 bytes
+(epstopdf)             Output file: <Figure/FigModelW-distance-eps-converted-to
+.pdf>
+(epstopdf)                    date: 2020-05-01 14:24:58
+(epstopdf)                    size: 88936 bytes
+(epstopdf)             Command: <repstopdf --outfile=Figure/FigModelW-distance-
+eps-converted-to.pdf Figure/FigModelW-distance.eps>
+(epstopdf)             \includegraphics on input line 49.
+Package epstopdf Info: Output file is already uptodate.
+<Figure/FigModelW-distance-eps-converted-to.pdf, id=97, 860.21375pt x 304.13625
+pt>
+File: Figure/FigModelW-distance-eps-converted-to.pdf Graphic file (type pdf)
+<use Figure/FigModelW-distance-eps-converted-to.pdf>
+Package pdftex.def Info: Figure/FigModelW-distance-eps-converted-to.pdf  used o
+n input line 49.
+(pdftex.def)             Requested size: 347.12354pt x 122.72899pt.
+ [10 <./Figure/FigModelW-distance-eps-converted-to.pdf>]
+Overfull \hbox (2.31837pt too wide) in paragraph at lines 131--151
+ [] 
+ []
+
+[11]
+
+LaTeX Warning: Command \textless invalid in math mode on input line 162.
+
+
+LaTeX Warning: Command \textless invalid in math mode on input line 162.
+
+
+LaTeX Warning: Command \textless invalid in math mode on input line 162.
+
+Package epstopdf Info: Source file: <Figure/FIGURE_EVD.eps>
+(epstopdf)                    date: 2020-04-28 11:44:12
+(epstopdf)                    size: 405430 bytes
+(epstopdf)             Output file: <Figure/FIGURE_EVD-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-28 15:44:44
+(epstopdf)                    size: 51551 bytes
+(epstopdf)             Command: <repstopdf --outfile=Figure/FIGURE_EVD-eps-conv
+erted-to.pdf Figure/FIGURE_EVD.eps>
+(epstopdf)             \includegraphics on input line 200.
+Package epstopdf Info: Output file is already uptodate.
+<Figure/FIGURE_EVD-eps-converted-to.pdf, id=122, 433.62pt x 296.10625pt>
+File: Figure/FIGURE_EVD-eps-converted-to.pdf Graphic file (type pdf)
+<use Figure/FIGURE_EVD-eps-converted-to.pdf>
+Package pdftex.def Info: Figure/FIGURE_EVD-eps-converted-to.pdf  used on input 
+line 200.
+(pdftex.def)             Requested size: 170.71652pt x 116.57889pt.
+
+Overfull \hbox (4.09871pt too wide) in paragraph at lines 200--201
+ [][] 
+ []
+
+Package epstopdf Info: Source file: <Figure/FIGURE_EFVD.eps>
+(epstopdf)                    date: 2020-04-28 11:43:52
+(epstopdf)                    size: 387068 bytes
+(epstopdf)             Output file: <Figure/FIGURE_EFVD-eps-converted-to.pdf>
+(epstopdf)                    date: 2020-04-28 15:44:44
+(epstopdf)                    size: 48354 bytes
+(epstopdf)             Command: <repstopdf --outfile=Figure/FIGURE_EFVD-eps-con
+verted-to.pdf Figure/FIGURE_EFVD.eps>
+(epstopdf)             \includegraphics on input line 206.
+Package epstopdf Info: Output file is already uptodate.
+<Figure/FIGURE_EFVD-eps-converted-to.pdf, id=123, 433.62pt x 296.10625pt>
+File: Figure/FIGURE_EFVD-eps-converted-to.pdf Graphic file (type pdf)
+<use Figure/FIGURE_EFVD-eps-converted-to.pdf>
+Package pdftex.def Info: Figure/FIGURE_EFVD-eps-converted-to.pdf  used on input
+ line 206.
+(pdftex.def)             Requested size: 170.71652pt x 116.57889pt.
+
+Overfull \hbox (4.09871pt too wide) in paragraph at lines 206--207
+ [][] 
+ []
+
+[12 <./Figure/FIGURE_EVD-eps-converted-to.pdf> <./Figure/FIGURE_EFVD-eps-conver
+ted-to.pdf>]
+Package epstopdf Info: Source file: <Figure/FigHexGANFuzzer_BufferException.eps
+>
+(epstopdf)                    date: 2020-04-29 18:04:04
+(epstopdf)                    size: 245196 bytes
+(epstopdf)             Output file: <Figure/FigHexGANFuzzer_BufferException-eps
+-converted-to.pdf>
+(epstopdf)                    date: 2020-04-29 18:04:30
+(epstopdf)                    size: 19533 bytes
+(epstopdf)             Command: <repstopdf --outfile=Figure/FigHexGANFuzzer_Buf
+ferException-eps-converted-to.pdf Figure/FigHexGANFuzzer_BufferException.eps>
+(epstopdf)             \includegraphics on input line 224.
+Package epstopdf Info: Output file is already uptodate.
+<Figure/FigHexGANFuzzer_BufferException-eps-converted-to.pdf, id=141, 787.94376
+pt x 153.57375pt>
+File: Figure/FigHexGANFuzzer_BufferException-eps-converted-to.pdf Graphic file 
+(type pdf)
+<use Figure/FigHexGANFuzzer_BufferException-eps-converted-to.pdf>
+Package pdftex.def Info: Figure/FigHexGANFuzzer_BufferException-eps-converted-t
+o.pdf  used on input line 224.
+(pdftex.def)             Requested size: 347.12354pt x 67.65466pt.
+ [13 <./Figure/FigHexGANFuzzer_BufferException-eps-converted-to.pdf>]) (./Secti
+ons/Conclusions.tex) (./Sections/Acknowledgments.tex) (./Main.bbl
+Underfull \hbox (badness 2828) in paragraph at lines 7--9
+[]\T1/cmr/m/n/9 Arjovsky, M., Chin-tala, S., Bot-tou, L.: Wasser-stein gan. arX
+iv preprint
+ []
+
+[14]) [15] (./Main.aux) ) 
 Here is how much of TeX's memory you used:
- 4069 strings out of 492649
- 59108 string characters out of 6133384
- 130192 words of memory out of 5000000
- 7879 multiletter control sequences out of 15000+600000
- 15675 words of font info for 44 fonts, out of 8000000 for 9000
+ 4187 strings out of 492649
+ 62358 string characters out of 6133384
+ 133363 words of memory out of 5000000
+ 7960 multiletter control sequences out of 15000+600000
+ 20262 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,38p,1178b,214s stack positions out of 5000i,500n,10000p,200000b,80000s
-{
-d:/Texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<d:/Texlive
-/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/Texlive/2018/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/Texlive/2018/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr6.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr7.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy9.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx090
-0.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/
-Texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Texlive/20
-18/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><d:/Texlive/2018/texmf-d
-ist/fonts/type1/public/cm-super/sfrm1000.pfb><d:/Texlive/2018/texmf-dist/fonts/
-type1/public/cm-super/sftt0900.pfb>
-Output written on Main.pdf (1 page, 159923 bytes).
+ 41i,15n,38p,1178b,320s stack positions out of 5000i,500n,10000p,200000b,80000s
+{d:/Texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/c
+m-super-t1.enc}<d:/Texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex1
+0.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><d:
+/Texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><d:/Texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><d:/Texlive/2018/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/Texlive/2018/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr10.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr5.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr6.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
+fb><d:/Texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><d:/Te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><d:/Texlive/2018
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><d:/Texlive/2018/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmti10.pfb><d:/Texlive/2018/texmf-dist/fonts/t
+ype1/public/amsfonts/symbols/msam10.pfb><d:/Texlive/2018/texmf-dist/fonts/type1
+/public/amsfonts/symbols/msbm10.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/pub
+lic/amsfonts/symbols/msbm7.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/c
+m-super/sfbi1000.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/cm-super/sf
+bx0900.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb
+><d:/Texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><d:/Texli
+ve/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><d:/Texlive/2018/te
+xmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><d:/Texlive/2018/texmf-dist/f
+onts/type1/public/cm-super/sfrm0900.pfb><d:/Texlive/2018/texmf-dist/fonts/type1
+/public/cm-super/sfrm1000.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/cm
+-super/sfti0900.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/cm-super/sft
+i1000.pfb><d:/Texlive/2018/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
+
+Output written on Main.pdf (15 pages, 728404 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 244 PDF objects out of 1000 (max. 8388607)
+ 161 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

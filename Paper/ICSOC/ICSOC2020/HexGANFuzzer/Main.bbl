@@ -1,6 +1,115 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
 \providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{arjovsky2017wasserstein}
+Arjovsky, M., Chintala, S., Bottou, L.: Wasserstein gan. arXiv preprint
+  arXiv:1701.07875  (2017)
+
+\bibitem{bastani2017synthesizing}
+Bastani, O., Sharma, R., Aiken, A., Liang, P.: Synthesizing program input
+  grammars. ACM SIGPLAN Notices  \textbf{52}(6),  95--110 (2017)
+
+\bibitem{chen2018systematic}
+Chen, C., Cui, B., Ma, J., Wu, R., Guo, J., Liu, W.: A systematic review of
+  fuzzing techniques. Computers \& Security  \textbf{75},  118--137 (2018)
+
+\bibitem{chen2018iotfuzzer}
+Chen, J., Diao, W., Zhao, Q., Zuo, C., Lin, Z., Wang, X., Lau, W.C., Sun, M.,
+  Yang, R., Zhang, K.: Iotfuzzer: Discovering memory corruptions in iot through
+  app-based fuzzing. In: NDSS (2018)
+
+\bibitem{demott2007revolutionizing}
+DeMott, J., Enbody, R., Punch, W.F.: Revolutionizing the field of grey-box
+  attack surface testing with evolutionary fuzzing. BlackHat and Defcon  (2007)
+
+\bibitem{duran1984evaluation}
+Duran, J.W., Ntafos, S.C.: An evaluation of random testing. IEEE transactions
+  on Software Engineering  \textbf{12}(4),  438--444 (1984)
+
+\bibitem{godefroid2017learn}
+Godefroid, P., Peleg, H., Singh, R.: Learn\&fuzz: Machine learning for input
+  fuzzing. In: 2017 32nd IEEE/ACM International Conference on Automated
+  Software Engineering (ASE). pp. 50--59. IEEE (2017)
+
+\bibitem{heusel2017gans}
+Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., Hochreiter, S.: Gans
+  trained by a two time-scale update rule converge to a local nash equilibrium.
+  In: Advances in Neural Information Processing Systems. pp. 6626--6637 (2017)
+
+\bibitem{karras2017progressive}
+Karras, T., Aila, T., Laine, S., Lehtinen, J.: Progressive growing of gans for
+  improved quality, stability, and variation. arXiv preprint arXiv:1710.10196
+  (2017)
+
+\bibitem{kaschner2009automatic}
+Kaschner, K., Lohmann, N.: Automatic test case generation for interacting
+  services, service-oriented computing---icsoc 2008 workshops: Icsoc 2008
+  international workshops, sydney, australia, december 1st, 2008, revised
+  selected papers (2009)
+
+\bibitem{lasi2014industry}
+Lasi, H., Fettke, P., Kemper, H.G., Feld, T., Hoffmann, M.: Industry 4.0.
+  Business \& information systems engineering  \textbf{6}(4),  239--242 (2014)
+
+\bibitem{li2018fuzzing}
+Li, J., Zhao, B., Zhang, C.: Fuzzing: a survey. Cybersecurity  \textbf{1}(1),
+  ~6 (2018)
+
+\bibitem{li2020gan}
+Li, M., Lin, J., Ding, Y., Liu, Z., Zhu, J.Y., Han, S.: Gan compression:
+  Efficient architectures for interactive conditional gans. arXiv preprint
+  arXiv:2003.08936  (2020)
+
+\bibitem{li2019intelligent}
+Li, Z., Zhao, H., Shi, J., Huang, Y., Xiong, J.: An intelligent fuzzing data
+  generation method based on deep adversarial learning. IEEE Access
+  \textbf{7},  49327--49340 (2019)
+
+\bibitem{light2017mosquitto}
+Light, R.: Mosquitto: server and client implementation of the mqtt protocol.
+  Journal of Open Source Software  \textbf{2}(13), ~265 (2017)
+
+\bibitem{lucic2018gans}
+Lucic, M., Kurach, K., Michalski, M., Gelly, S., Bousquet, O.: Are gans created
+  equal? a large-scale study. In: Advances in neural information processing
+  systems. pp. 700--709 (2018)
+
+\bibitem{martin2019catalogue}
+Martin-Lopez, A., Segura, S., Ruiz-Cort{\'e}s, A.: A catalogue of
+  inter-parameter dependencies in restful web apis. In: International
+  Conference on Service-Oriented Computing. pp. 399--414. Springer (2019)
+
+\bibitem{mondal2015exploring}
+Mondal, D., Hemmati, H., Durocher, S.: Exploring test suite diversification and
+  code coverage in multi-objective test case selection. In: 2015 IEEE 8th
+  International Conference on Software Testing, Verification and Validation
+  (ICST). pp. 1--10. IEEE (2015)
+
+\bibitem{shmelkov2018good}
+Shmelkov, K., Schmid, C., Alahari, K.: How good is my gan? In: Proceedings of
+  the European Conference on Computer Vision (ECCV). pp. 213--229 (2018)
+
+\bibitem{sparks2007automated}
+Sparks, S., Embleton, S., Cunningham, R., Zou, C.: Automated vulnerability
+  analysis: Leveraging control flow for evolutionary input crafting. In:
+  Twenty-Third Annual Computer Security Applications Conference (ACSAC 2007).
+  pp. 477--486. IEEE (2007)
+
+\bibitem{vaswani2017attention}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N.,
+  Kaiser, {\L}., Polosukhin, I.: Attention is all you need. In: Advances in
+  neural information processing systems. pp. 5998--6008 (2017)
+
+\bibitem{wu2017vulnerability}
+Wu, F., Wang, J., Liu, J., Wang, W.: Vulnerability detection with deep
+  learning. In: 2017 3rd IEEE International Conference on Computer and
+  Communications (ICCC). pp. 1298--1302. IEEE (2017)
+
+\bibitem{xia2018remote}
+Xia, H., Liu, C.: Remote sensing image deblurring algorithm based on wgan. In:
+  International Conference on Service-Oriented Computing. pp. 113--125.
+  Springer (2018)
 
 \end{thebibliography}

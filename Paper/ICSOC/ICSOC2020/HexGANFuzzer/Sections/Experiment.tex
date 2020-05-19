@@ -143,9 +143,9 @@ The widely used General Purpose Fuzzer (GPF) \cite{demott2007revolutionizing}, C
 		\hline
 	\end{tabular}
 	\begin{tablenotes}
-		\item[a] SE/SP corresponds to the rate of function codes/non-essential hexadecimal characters being generated correctly.
-		\item[b] AC is the comprehensive embodiment of SE and SP.
-		\item[c] F-measure indicates a harmonic mean that function codes and the overall message packages are generated correctly, which is the embodiment of model learning ICPs' specification ability.
+		\item[a] \textit{SE/SP} corresponds to the rate of function codes/non-essential hexadecimal characters being generated correctly.
+		\item[b] \textit{AC} is the comprehensive embodiment of \textit{SE} and \textit{SP}.
+		\item[c] \textit{F-measure} indicates a harmonic mean that function codes and the overall message packages are generated correctly, which is the embodiment of model learning ICPs' specification ability.
 	\end{tablenotes}
 \end{threeparttable}
 \end{table*}
@@ -236,7 +236,7 @@ This makes the communication invalid between the client and the broker for a per
 \subsubsection{Applying The Method to Modbus-TCP}
 
 
-As shown in Table \ref{table_MQTT}, we detect these potential vulnerabilities in Modbus-TCP via the new trained HexGANFuzzer. 
+As shown in Table \ref{table_MQTT}, we detect these potential vulnerabilities 
 %including slave crash, station off-line, using abnormal function code and so on,
 \begin{table}[htbp]
 	\caption{Potential Vulnerabilities and  in Modbus-TCP}
@@ -256,6 +256,7 @@ As shown in Table \ref{table_MQTT}, we detect these potential vulnerabilities in
 		\bottomrule
 	\end{tabular}
 \end{table}
+in Modbus-TCP via the new trained HexGANFuzzer. 
 
 The number of Triggered anomalies (NTA) represents the total number of anomalies triggered by the models during test time and average time interval of triggered anomalies (ATITA) is the quotient of the number of triggered anomalies and test time. Experiments on the Modbus-TCP protocol prove that our method has great versatility. % In the experiment, we send the generated data messages $S_i$ to the slave stations and record the corresponding received message $R_i$. Massive message pairs $<S_i, R_i>$ are obtained. According to the abnormal protocol characterization above, we analyze and compare the specified field values and obtained the following statistical results. % {350pt}{lcc}
 
